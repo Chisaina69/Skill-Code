@@ -1,43 +1,90 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-family: 'Times New Roman', Times, serif;
+}
+.header h1 {
+  margin-left: 3rem;
+}
+
+.nav a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: grey;
+}
+
+.centered-text {
+  text-align: left; 
+  margin-top: 7rem;
+  margin-left: 12rem;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 2rem;
+}
+
+.highlight {
+  color: orangered;
+}
+.highlight-two {
+  color: orangered;
+}
+
+.centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.centered-container form {
+  max-width: 300px;
+  width: 100%;
+  margin-bottom: 1rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.centered-container label {
+  display: block;
+  margin-bottom: 0.5rem;
+  text-align: left;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.centered-container input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
 }
 
-.card {
-  padding: 2em;
+.centered-container button {
+  padding: 0.5rem 1rem;
 }
 
-.read-the-docs {
-  color: #888;
+.join-us-btn {
+  padding: 0.2rem 2rem;
+  font-size: 1.3rem;
+  background-color:white;
+  color: orangered;
+  border: 0.8px solid orangered;
+  cursor: pointer;
+  margin-top: 4rem;
+  margin-left: 6rem;
+
+}
+
+.join-us-text {
+  color: black;
+  align-self: flex-start;
+  font-family: 'Times New Roman', Times, serif;
+
+}
+.copyright {
+  text-align: left;
+  margin-top: 5rem;
+  font-size: 1rem;
+  color: lightslategrey;
+  margin-left: 6rem;
 }
 

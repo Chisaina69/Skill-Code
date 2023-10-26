@@ -1,6 +1,8 @@
+// imports
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+// useState hook state variables
 const Register = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -12,6 +14,7 @@ const Register = () => {
   const [userType, setUserType] = useState(null);
   const navigate = useNavigate();
 
+// Event handling for input 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -24,6 +27,7 @@ const Register = () => {
     navigate('/');
   };
 
+// Event handling for user type (either student or mentor)
   const handleUserTypeSelection = (type) => {
     setUserType(type);
     setFormData({
@@ -32,9 +36,11 @@ const Register = () => {
     });
   };
 
+// Form submit
   const handleSubmit = (e) => {
     e.preventDefault();
 
+ // User registration information
     if (userType) {
       console.log(`Registering user as a ${userType}:
         Name: ${formData.name}

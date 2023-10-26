@@ -1,15 +1,19 @@
+//import
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+ //useState hook state variables 
 const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
 
+//Defining userType and navigate using (useState and useNavigate hooks)
   const [userType, setUserType] = useState(null);
   const navigate = useNavigate();
 
+//Responsible for input changes and updating the form data
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -18,14 +22,17 @@ const Login = () => {
     });
   };
 
+ //Navigating back to the homepage
   const handleBack = () => {
     navigate('/');
   };
 
+// Handling the type of user
   const handleLoginClick = (type) => {
     setUserType(type);
   };
 
+ //form submission
   const handleSubmit = (e) => {
     e.preventDefault();
 

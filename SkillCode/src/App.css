@@ -1,10 +1,18 @@
+
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  font-size: 1.5rem;
-  font-family: 'Times New Roman', Times, serif;
+  color: #15284C;
+ text-align: center;
+ font-family: Inter;
+ font-size: 20px;
+ font-style: normal;
+ font-weight: 800;
+ line-height: normal;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 1rem;
+ font-size: 1.5rem;
+
 }
 .header h1 {
   margin-left: 3rem;
@@ -13,78 +21,110 @@
 .nav a {
   margin-left: 1rem;
   text-decoration: none;
-  color: grey;
+  color: #808080;
 }
 
 .centered-text {
-  text-align: left; 
-  margin-top: 7rem;
-  margin-left: 12rem;
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 2rem;
+ 
+font-family: Inter;
+font-size: 60px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+text-align: left; 
+margin-top: 7rem;
+margin-left: 12rem;
+font-size: 2.5rem;
 }
-
 .highlight {
-  color: orangered;
+  color: #EA501A;
 }
 .highlight-two {
-  color: orangered;
-}
-
-.centered-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  text-align: center;
-}
-
-.centered-container form {
-  max-width: 300px;
-  width: 100%;
-  margin-bottom: 1rem;
-}
-
-.centered-container label {
-  display: block;
-  margin-bottom: 0.5rem;
-  text-align: left;
-}
-
-.centered-container input {
-  width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.centered-container button {
-  padding: 0.5rem 1rem;
+  color: #EA501A;
 }
 
 .join-us-btn {
   padding: 0.2rem 2rem;
   font-size: 1.3rem;
-  background-color:white;
-  color: orangered;
   border: 0.8px solid orangered;
   cursor: pointer;
   margin-top: 4rem;
   margin-left: 6rem;
+  color: #EA501A;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 
 }
 
 .join-us-text {
-  color: black;
-  align-self: flex-start;
-  font-family: 'Times New Roman', Times, serif;
+color: #000;
+font-family: Inter;
+font-size: 24px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
 
 }
 .copyright {
-  text-align: left;
-  margin-top: 5rem;
-  font-size: 1rem;
-  color: lightslategrey;
-  margin-left: 6rem;
+margin-top: 5rem;  
+margin-left: 6rem;
+color: #808080;
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+
 }
 
+
+
+.centered-container {
+  text-align: center;
+  margin: 100px auto;
+  max-width: 400px;
+  padding: 20px;
+  border: 2px solid #ccc;
+  background-color: #15284C;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.centered-container h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.centered-container select,
+.centered-container input {
+  padding: 10px;
+  font-size: 1em;
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.centered-container select:focus,
+.centered-container input:focus {
+  outline: none;
+  border-color:  #15284C;
+}
+
+.centered-container button {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #EA501A;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.centered-container form {
+  display: grid;
+  gap: 10px;
+}

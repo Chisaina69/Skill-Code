@@ -1,9 +1,12 @@
-// imports
+//Importing necessary modules from React and React Router DOM
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-// useState hook state variables
+//Register component
 const Register = () => {
+
+//State to hold form data
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,10 +14,16 @@ const Register = () => {
     role: ''
   });
 
+//State to hold the selected user type (student or mentor)
   const [userType, setUserType] = useState(null);
+
+//State to track the registration status (success or null)
+  const [registrationStatus, setRegistrationStatus] = useState(null);
+
+//Hook to navigate between routes
   const navigate = useNavigate();
 
-// Event handling for input 
+//Function to handle changes in form inputs
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -23,11 +32,12 @@ const Register = () => {
     });
   };
 
+//Function to handle navigation back to home page
   const handleBack = () => {
     navigate('/');
   };
 
-// Event handling for user type (either student or mentor)
+//Function to handle user type selection (student or mentor)
   const handleUserTypeSelection = (type) => {
     setUserType(type);
     setFormData({
@@ -36,30 +46,56 @@ const Register = () => {
     });
   };
 
-// Form submit
+//Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
- // User registration information
     if (userType) {
-      console.log(`Registering user as a ${userType}:
-        Name: ${formData.name}
-        Email: ${formData.email}
-        Password: ${formData.password}`);
+      const registerRoute = userType === 'mentor' ? 'api/mentors/signup' : 'api/students/signup';
 
-      navigate('/');
+      fetch(registerRoute, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.access_token) {
+          localStorage.setItem('accessToken', data.access_token);
+          setRegistrationStatus('success');
+        } else {
+          alert(data.error);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while registering.');
+      });
     }
+  };
+
+//Function to handle clicking on the "Login" button
+  const handleLoginClick = () => {
+    navigate('/login');
   };
 
   return (
     <div className="centered-container">
-      <h2>Register</h2>
-      {userType === null ? (
+      <h2 style={{ color: 'white' }}>Register</h2>
+      {registrationStatus === 'success' ? (
         <div>
-          <p>Are you registering as a student or mentor?</p>
+          <p style={{ color: 'white' }}>You have Successfully created a SkillCode account!</p>
+          <button onClick={handleLoginClick}>Proceed to Login</button>
+        </div>
+      ) : (
+        <div>
+          <p style={{ color: 'white' }}>Are you registering as a student or mentor?</p>
           <button
             type="button"
             onClick={() => handleUserTypeSelection('student')}
+            style={{ marginRight: '50px' }} 
           >
             Student
           </button>
@@ -70,10 +106,11 @@ const Register = () => {
             Mentor
           </button>
         </div>
-      ) : (
+      )}
+      {userType !== null && registrationStatus !== 'success' && (
         <form onSubmit={handleSubmit}>
           <div>
-            <label>Name</label>
+            <label style={{ color: 'white' }}>Name</label>
             <input
               type="text"
               name="name"
@@ -83,7 +120,7 @@ const Register = () => {
             />
           </div>
           <div>
-            <label>Email</label>
+            <label style={{ color: 'white' }}>Email</label>
             <input
               type="email"
               name="email"
@@ -93,7 +130,7 @@ const Register = () => {
             />
           </div>
           <div>
-            <label>Password</label>
+            <label style={{ color: 'white' }}>Password</label>
             <input
               type="password"
               name="password"
@@ -105,9 +142,12 @@ const Register = () => {
           <button type="submit">Register</button>
         </form>
       )}
-      <button onClick={handleBack}>Back to Home</button>
+      <div style={{ marginTop: '20px' }}>
+        <button onClick={handleBack}>Back to Home</button>
+      </div>
     </div>
   );
 };
+
 
 export default Register;

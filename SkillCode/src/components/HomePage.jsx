@@ -1,11 +1,15 @@
+// Importing necessary modules from React and React Router DOM
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+//Header component
 const Header = () => {
   return (
     <header className="header">
       <h1>SkillCode</h1>
       <nav className="nav">
+        {/* Links to the Login and Register pages */}
         <Link to="/login">Login</Link>
         <Link to="/register">Register</Link>
       </nav>
@@ -13,22 +17,24 @@ const Header = () => {
   );
 };
 
+//Text component
 const Text = () => {
   return (
     <div className="centered-text">
-      <h1>
+      <h1>      
         <span className="highlight">Unleash Your Coding </span>
         <br />
         <span className="highlight-two">Potential With</span>
         <br />
         <span className="highlight-two">Engaging Challenges</span>
-        <br />
+        <br />      
         Elevate Your Skills One Line at a Time
       </h1>
     </div>
   );
 };
 
+//JoinUsButton component
 const JoinUsButton = () => {
   return (
     <button className="join-us-btn">
@@ -37,6 +43,7 @@ const JoinUsButton = () => {
   );
 };
 
+//Copyright component
 const Copyright = () => {
   return (
     <div className="copyright">
@@ -45,15 +52,17 @@ const Copyright = () => {
   );
 };
 
+//HomePage component
 const HomePage = () => {
   return (
-    <div>
-      <Header />
-      <Text />
-      <JoinUsButton />
+    <div> 
+      <Header />     
+      <Text />     
+      <JoinUsButton />     
       <Copyright />
     </div>
   );
 };
+
 
 export default HomePage;

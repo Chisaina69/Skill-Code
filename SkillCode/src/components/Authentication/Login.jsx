@@ -1,19 +1,21 @@
-//import
+// Importing necessary modules from React and React Router DOM
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
- //useState hook state variables 
 const Login = () => {
+
+  // State to hold form data
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
 
-//Defining userType and navigate using (useState and useNavigate hooks)
-  const [userType, setUserType] = useState(null);
+// State to hold the selected user type
+  const [userType, setUserType] = useState('');
   const navigate = useNavigate();
 
-//Responsible for input changes and updating the form data
+// Function to handle changes in form inputs
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -22,45 +24,66 @@ const Login = () => {
     });
   };
 
- //Navigating back to the homepage
-  const handleBack = () => {
-    navigate('/');
-  };
-
-// Handling the type of user
+// Function to handle selection of user type
   const handleLoginClick = (type) => {
     setUserType(type);
   };
 
- //form submission
+// Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (userType) {
-      console.log(`Logging in as a ${userType}:
-        Email: ${formData.email}
-        Password: ${formData.password}`);
+      let loginRoute;
+      if (userType === 'mentor') {
+        loginRoute = 'api/mentors/login';
+      } else if (userType === 'student') {
+        loginRoute = 'api/students/login';
+      }
 
-      
-      navigate('/');
+// Making a POST request to the login route
+      fetch(loginRoute, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.access_token) {
+
+    // If login is successful, store access token in local storage
+          localStorage.setItem('accessToken', data.access_token);
+          navigate('/');
+        } else {
+
+    // If there's an error, display an alert with the error message
+          alert(data.error);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while logging in.');
+      });
     }
   };
 
   return (
     <div className="centered-container">
-      <h2>Login</h2>
-      {userType === null ? (
-        <div>
-          <select onChange={(e) => handleLoginClick(e.target.value)}>
-            <option value="">Select User Type</option>
-            <option value="student">Student</option>
-            <option value="mentor">Mentor</option>
-          </select>
-        </div>
-      ) : (
+      <h2 style={{ color: 'white' }}>Login</h2>
+      <div>
+        {/* Dropdown menu to select user type */}
+        <select onChange={(e) => handleLoginClick(e.target.value)}>
+          <option value="">Select User Type</option>
+          <option value="student">Student</option>
+          <option value="mentor">Mentor</option>
+        </select>
+      </div>
+      {userType !== '' && (
         <form onSubmit={handleSubmit}>
           <div>
-            <label>Email</label>
+            <label style={{ color: 'white' }}>Email</label>
             <input
               type="email"
               name="email"
@@ -70,7 +93,7 @@ const Login = () => {
             />
           </div>
           <div>
-            <label>Password</label>
+            <label style={{ color: 'white' }}>Password</label>
             <input
               type="password"
               name="password"
@@ -78,11 +101,13 @@ const Login = () => {
               onChange={handleChange}
               required
             />
-          </div>
+          </div>       
           <button type="submit">Login</button>
-          <button type="button" onClick={handleBack}>Back to Home</button>
         </form>
       )}
+      <div style={{ marginTop: '20px' }}>
+        <button onClick={() => navigate('/')}>Back to Home</button>
+      </div>
     </div>
   );
 };

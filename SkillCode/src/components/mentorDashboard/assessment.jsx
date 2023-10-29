@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import '../App.css';
 
 
-function assesment(){
+
+function Assesment(){
  return(
     <div className = 'mentor'>
     <h1 className='logo'> SkillCode</h1>
@@ -10,8 +10,8 @@ function assesment(){
       <li>Profile</li>
       <li>Assesment</li>
       <li>Grades</li>
-      <li>Home</li>
-      <li>Help</li>
+      <li style={{marginBottom: '350px'}}>Home</li>
+      <li >Help</li>
       <li>Logout</li>
 
     </ul>
@@ -21,4 +21,4 @@ function assesment(){
 
 }
 
-export default assesment;
+export default Assesment;

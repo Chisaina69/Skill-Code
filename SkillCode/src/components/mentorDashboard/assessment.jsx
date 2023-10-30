@@ -4,10 +4,10 @@ const YourComponent = () => {
   const [assessments, setAssessments] = useState([]);
 
   useEffect(() => {
-    // fetching assessments 
+    //  fetching assessments from a mock API
     const fetchAssessments = async () => {
       try {
-        // endpoint URL
+        //  endpoint URL
         const endpoint = 'https://api.mockendpoint.com/assessments'; // Replace this with your actual API endpoint
 
         // Fetching data
@@ -20,7 +20,7 @@ const YourComponent = () => {
         }
       } catch (error) {
         console.error('Error fetching assessments:', error);
-        // Handle errors as necessary
+        
       }
     };
 

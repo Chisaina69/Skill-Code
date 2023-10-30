@@ -1,20 +1,24 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Student from './components/studentDashboard/studentdashboard';
+import AssessmentComponent from './components/studentDashboard/Assesment';
 import Login from './components/Authentication/Login';
 import Register from './components/Authentication/Register';
 import HomePage from './components/HomePage';
 import './App.css'; 
 
-const App = () => {
+function App() {
   return (
-    <Router>
       <Routes>
+        <Route path="/" element={<Student />} />
+        <Route path="/assessment" element={<AssessmentComponent />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
-    </Router>
   );
-};
+}
 
 export default App;
+
+

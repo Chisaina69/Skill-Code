@@ -1,43 +1,56 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.mentor {
+  display: flex;
+  flex-direction: column;
 }
+
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  margin-bottom: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.sidebar {
+  background: #f2f2f2;
+  width: 200px; 
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+
+.navbar {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.card {
-  padding: 2em;
+
+.navbar li {
+  padding: 8px;
+  cursor: pointer;
 }
 
-.read-the-docs {
-  color: #888;
+
+.help {
+  order: 11;
 }
 
+.logout {
+  order: 12;
+}
+
+/* Additional styles for the assessment search */
+.assessment-search {
+  text-align: center; /* Center the input and list */
+  margin-bottom: 30px; /* Add space between the assessments and the navbar */
+}
+
+.assessment-list {
+  list-style: none;
+  padding: 0;
+  /* Style the assessment list */
+}
+
+.assessment-list li {
+  cursor: pointer;
+  margin: 5px 0;
+  /* Add additional styles for each assessment item */
+}

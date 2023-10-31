@@ -127,7 +127,8 @@ line-height: normal;
 .centered-container form {
   display: grid;
   gap: 10px;
-=======
+}
+
 .mentor {
   display: flex;
   flex-direction: column;

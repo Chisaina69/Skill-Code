@@ -45,6 +45,8 @@
 .centered-container form {
   display: grid;
   gap: 10px;
+}
+
 
 .mentor {
   display: flex;

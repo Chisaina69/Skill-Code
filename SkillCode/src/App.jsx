@@ -1,3 +1,8 @@
+
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -15,8 +20,12 @@ import Home from './components/mentorDashboard/Home';
 import Help from './components/mentorDashboard/Help';
 import Logout from './components/mentorDashboard/Logout';
 
+
 function App() {
+
   return (
+    <>
+
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
@@ -34,6 +43,4 @@ function App() {
   );
 }
 
-export default App;
-
-
+export default App

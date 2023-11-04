@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import TopBar from "../topbar";
 
 function AssessmentComponent() {
   const [assessmentData, setAssessmentData] = useState(null);
@@ -39,6 +40,7 @@ function AssessmentComponent() {
 
   return (
     <div className="container mx-auto p-4">
+      <TopBar/>
       <h1 className="text-2xl font-bold text-orange-500 mb-4">Assessment Questions</h1>
       {assessmentData.map((assessment, index) => (
         <div key={index} className="mb-4 border p-4 rounded-lg bg-white shadow-md">

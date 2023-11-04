@@ -20,7 +20,7 @@ function Sidebar({ showSidebar }) {
         <FontAwesomeIcon icon={faQuestionCircle} className="mr-2" />
         Quiz
       </Link>
-      <Link to="/home" className="sidebar-link my-2 hover:bg-blue-850">
+      <Link to="/" className="sidebar-link my-2 hover:bg-blue-850">
         <FontAwesomeIcon icon={faHome} className="mr-2" />
         Home
       </Link>

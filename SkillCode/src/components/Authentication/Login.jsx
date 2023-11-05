@@ -36,9 +36,9 @@ const Login = () => {
     if (userType) {
       let loginRoute;
       if (userType === 'mentor') {
-        loginRoute = 'api/mentors/login';
+        loginRoute = 'api/SkillCode/mentors/login';
       } else if (userType === 'student') {
-        loginRoute = 'api/students/login';
+        loginRoute = 'api/SkillCode/students/login';
       }
 
 // Making a POST request to the login route
@@ -52,13 +52,13 @@ const Login = () => {
       .then(response => response.json())
       .then(data => {
         if (data.access_token) {
-
-    // If login is successful, store access token in local storage
           localStorage.setItem('accessToken', data.access_token);
-          navigate('/');
+          if (userType === 'mentor') {
+            navigate('/mentor');
+          } else if (userType === 'student') {
+            navigate('/student');
+          }
         } else {
-
-    // If there's an error, display an alert with the error message
           alert(data.error);
         }
       })

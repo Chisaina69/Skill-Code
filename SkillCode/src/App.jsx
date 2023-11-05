@@ -1,4 +1,6 @@
-import React from 'react';
+import React from 'react
+import { Route, Routes } from 'react-router-dom';
+import StudentProfile from './components/studentDashboard/profile';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Student from './components/studentDashboard/studentdashboard';
@@ -17,7 +19,13 @@ import Logout from './components/mentorDashboard/Logout';
 
 function App() {
   return (
+      
       <Routes>
+
+      <Route path="/" element={<Student />} />
+      <Route path="/assessment" element={<AssessmentComponent />} />
+      <Route path="/profile" element={<StudentProfile />} />
+  
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -31,6 +39,7 @@ function App() {
         <Route path="/mentor/help" element={<Help />} />
         <Route path="/mentor/logout" element={<Logout />} />
       </Routes>
+
   );
 }
 

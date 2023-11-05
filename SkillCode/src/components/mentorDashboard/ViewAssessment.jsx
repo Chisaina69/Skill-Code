@@ -47,8 +47,6 @@ const ViewAssessment = () => {
         return null;
     }
 
-    const predefinedColors = ['#FF5733', '#33FF57', '#5733FF', '#33FFF5', '#FF33C9', '#33C9FF'];
-
     return (
 
         <div className="modal">

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import InviteStudents from './InviteStudents';
+import { Link, useNavigate} from 'react-router-dom';
+
 
 
 const Assessment = () => {
   const [assessments, setAssessments] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
-  // const { assessmentId } = useParams();
+
 
   useEffect(() => {
     const fetchAssessments = async () => {

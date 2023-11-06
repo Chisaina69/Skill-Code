@@ -55,10 +55,11 @@ const Assessment = () => {
 
   return (
     <>
-      <div style={{ backgroundColor: '#15284C', padding: '20px' }}>
-        <h1 style={{ color: '#faa307' }}>Your Assessmets</h1>
+      <div className='flex-column'>
+      <div >
+        <h1 className='font-medium  font-sans text-lg p-10 py-1 px-10 bg-orange-600 rounded inline-block mt-11 text-white w-full text-center '>Assessmets</h1>
         <Link to="/create-assessment">
-          <button style={{ backgroundColor: '#faa307', color: '#15284C', padding: '10px', border: 'none', cursor: 'pointer', borderRadius: '5px' }}>Create Assessment</button>
+          <button className='font-medium  font-sans text-lg p-10 py-1 px-10 bg-blue-950 rounded inline-block mt-11 text-white w- text-center'> + Create Assessment</button>
         </Link>
       </div>
 
@@ -83,29 +84,29 @@ const Assessment = () => {
         />
       </div>
 
-      <table style={{ borderCollapse: 'collapse', width: '100%', border: '2px solid #15284C' }}>
+      <table className='table-auto border '>
         <thead>
           <tr>
-            <th style={{ backgroundColor: '#faa307', color: '#15284C', padding: '10px' }}>ID</th>
-            <th style={{ backgroundColor: '#faa307', color: '#15284C', padding: '10px' }}>Title</th>
-            <th style={{ backgroundColor: '#faa307', color: '#15284C', padding: '10px' }}>Number of Questions</th>
-            <th style={{ backgroundColor: '#faa307', color: '#15284C', padding: '10px' }}>Actions</th>
+            <th className='font-medium text-white font-sans text-lg bg-blue-950 '>ID</th>
+            <th className='font-medium text-white font-sans text-lg bg-blue-950' >Title</th>
+            <th className='font-medium text-white font-sans text-lg bg-blue-950'>Number of Questions</th>
+            <th className='font-medium text-white font-sans text-lg bg-blue-950'>Actions</th>
           </tr>
         </thead>
         <tbody>
           {filteredAssessments.map(assessment => (
             <tr key={assessment.id} style={{ backgroundColor: '#f5f5f5' }}>
-              <td style={{ color: '#15284C', padding: '10px', border: '1px solid #15284C', maxWidth: '50px', overflow: 'hidden', textOverflow: 'ellipsis' }}>{assessment.id}</td>
-              <td style={{ color: '#15284C', padding: '10px', border: '1px solid #15284C', maxWidth: '50px', overflow: 'hidden', textOverflow: 'ellipsis' }}>{assessment.title}</td>
-              <td style={{ color: '#15284C', padding: '10px', border: '1px solid #15284C', maxWidth: '50px', overflow: 'hidden', textOverflow: 'ellipsis' }}>{assessment.questions_count}</td>
-              <td style={{ color: '#15284C', padding: '10px', border: '1px solid #15284C', maxWidth: '50px', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              <td >{assessment.id}</td>
+              <td >{assessment.title}</td>
+              <td >{assessment.questions_count}</td>
+              <td >
                 <button
-                  style={{ backgroundColor: '#15284C', color: '#faa307', padding: '8px 12px', border: 'none', cursor: 'pointer', borderRadius: '5px', marginRight: '5px' }}
+                  className="bg-orange-600 text-white py-2 px-3 rounded-md cursor-pointer mr-1 font-semibold"
                   onClick={() => handleInviteStudents(assessment.id)}
                 >
                   Invite Students</button>
                 <button
-                  style={{ backgroundColor: '#15284C', color: '#faa307', padding: '8px 12px', border: 'none', cursor: 'pointer', borderRadius: '5px' }}
+                  className="bg-blue-950 text-white py-2 px-3 rounded-md cursor-pointer mr-1 font-semibold"
                   onClick={() => handleViewAssessment(assessment.id)}
                 >
                   View
@@ -115,7 +116,7 @@ const Assessment = () => {
           ))}
         </tbody>
       </table>
-     
+        </div>
     </>
   );
 };

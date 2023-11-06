@@ -1,12 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faClipboard, faChartLine, faHome, faLifeRing, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faClipboard, faChartLine, faHome, faLifeRing, faSignOutAlt,faUserTie } from "@fortawesome/free-solid-svg-icons";
 
 
 const NavBar = () => (
-    <div className="font-sans text-base w-1/4 p-10">
-      <h1 className='font-semibold text-blue-950 text-lg p-4'>SkillCode</h1>
+      <div className="font-sans text-base w-1/4 p-10">
+        <h1 className='font-semibold text-blue-950 text-lg p-4'>
+          SkillCode
+           {/* <FontAwesomeIcon icon={faUserTie} className="mr-2 w-20" /> */}
+        </h1>
       <div className='p-4'>
         <div >
           <ul>                 

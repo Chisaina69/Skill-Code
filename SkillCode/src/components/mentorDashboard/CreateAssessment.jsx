@@ -74,33 +74,65 @@ const CreateAssessment = () => {
     console.log("questions", questions)
 
     return (
-        <div style={{ fontFamily: 'Arial, sans-serif', color: '#15284C', maxWidth: '600px', margin: '0 auto' }}>
-            <h1 style={{ color: '#15284C', textAlign: 'center', borderBottom: '2px solid #15284C' }}>Create Assessment</h1>
-            {message && <p style={{ color: '#15284C', textAlign: 'center' }}>{message}</p>}
-            {error && <p style={{ color: '#faa307', textAlign: 'center' }}>{error}</p>}
-            <form onSubmit={submitForm} style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'flex-start', padding: '20px', backgroundColor: '#f5f5f5', borderRadius: '8px' }}>
-                <label style={{ color: '#15284C', marginBottom: '5px' }}>Title:</label>
-                <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required style={{ borderColor: '#15284C', padding: '8px', backgroundColor: '#fff', color: '#15284C', borderRadius: '5px', width: '100%', boxSizing: 'border-box' }} />
-                <label style={{ color: '#15284C', marginBottom: '5px' }}>Description:</label>
-                <textarea value={description} onChange={(e) => setDescription(e.target.value)} required style={{ borderColor: '#15284C', padding: '8px', backgroundColor: '#fff', color: '#15284C', borderRadius: '5px', width: '100%', boxSizing: 'border-box' }}></textarea>
-                {questions.map((question, index) => (
-                    <div key={index} style={{ marginBottom: '20px', width: '100%' }}>
-                        <label style={{ color: '#15284C', marginBottom: '5px' }}>Question {index + 1}:</label>
-                        <input type="text" value={question.text_question} name={`text_question_${index}`} onChange={(e) => handleQuestionChange(index, e)} required style={{ borderColor: '#15284C', padding: '8px', backgroundColor: '#fff', color: '#15284C', borderRadius: '5px', width: '100%', boxSizing: 'border-box' }} />
-                        <label style={{ color: '#15284C', marginBottom: '5px' }}>Options:</label>
-                        {question.options.map((option, i) => (
-                            <input key={i} type="text" value={option} name={`options_${index}_${i}`} onChange={(e) => handleQuestionChange(index, e)} required style={{ borderColor: '#15284C', padding: '8px', backgroundColor: '#fff', color: '#15284C', borderRadius: '5px', width: '100%', boxSizing: 'border-box', marginBottom: '5px' }} />
-                        ))}
-                        <label style={{ color: '#15284C', marginBottom: '5px' }}>Correct Answer:</label>
-                        <input type="text" value={question.correct_answer} name={`correct_answer_${index}`} onChange={(e) => handleQuestionChange(index, e)} required style={{ borderColor: '#15284C', padding: '8px', backgroundColor: '#fff', color: '#15284C', borderRadius: '5px', width: '100%', boxSizing: 'border-box' }} />
-                    </div>
-                ))}
-                <button type="button" onClick={addQuestion} style={{ backgroundColor: '#faa307', color: '#15284C', padding: '8px', border: 'none', cursor: 'pointer', borderRadius: '5px' }}>Add Question</button>
-                <button type="submit" style={{ backgroundColor: '#faa307', color: '#15284C', padding: '8px', border: 'none', cursor: 'pointer', borderRadius: '5px', marginTop: '20px' }}>Create Assessment</button>
-            </form>
+        <div className='student-scores-list'>
+  <h1 className='font-medium text-lg p-10 py-1 px-10 bg-orange-600 rounded inline-block mt-11 text-white w-full text-center'>Create Assessment</h1>
+  {message && <p className='text-center'>{message}</p>}
+  {error && <p className='text-orange-500 text-center'>{error}</p>}
+  <form onSubmit={submitForm} className='assessment-form'>
+    <label className='text-primary-color mb-2'>Title:</label>
+    <input
+      type="text"
+      value={title}
+      onChange={(e) => setTitle(e.target.value)}
+      required
+      className='input-style'
+    />
+    <label className='text-primary-color mb-2'>Description:</label>
+    <textarea
+      value={description}
+      onChange={(e) => setDescription(e.target.value)}
+      required
+      className='input-style'
+    ></textarea>
+    {questions.map((question, index) => (
+      <div key={index} className='question-inputs'>
+        <label className='text-primary-color mb-2'>Question {index + 1}:</label>
+        <input
+          type="text"
+          value={question.text_question}
+          name={`text_question_${index}`}
+          onChange={(e) => handleQuestionChange(index, e)}
+          required
+          className='input-style'
+        />
+        <label className='text-primary-color mb-2'>Options:</label>
+        {question.options.map((option, i) => (
+          <input
+            key={i}
+            type="text"
+            value={option}
+            name={`options_${index}_${i}`}
+            onChange={(e) => handleQuestionChange(index, e)}
+            required
+            className='input-style'
+          />
+        ))}
+        <label className='text-primary-color mb-2'>Correct Answer:</label>
+        <input
+          type="text"
+          value={question.correct_answer}
+          name={`correct_answer_${index}`}
+          onChange={(e) => handleQuestionChange(index, e)}
+          required
+          className='input-style'
+        />
+      </div>
+    ))}
+    <button type="button" onClick={addQuestion} className='button-style'>Add Question</button>
+    <button type="submit" className='button-style'>Create Assessment</button>
+  </form>
+</div>
 
-
-        </div>
     );
 };
 

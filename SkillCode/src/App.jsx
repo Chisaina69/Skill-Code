@@ -7,6 +7,7 @@ import Help from './components/mentorDashboard/Help'
 import Logout from './components/mentorDashboard/Logout'
 import ViewAssessment from './components/mentorDashboard/ViewAssessment'
 import InviteStudents from './components/mentorDashboard/InviteStudents'
+import CreateAssessment from './components/mentorDashboard/CreateAssessment'
 import './App.css'
 import {BrowserRouter,Outlet,Route, Router, Routes} from "react-router-dom"
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/help" element={<Help />} />
           <Route path="/assessments/:id" element={<ViewAssessment />} />
+          <Route path="/create-assessment" element={<CreateAssessment />} />
           <Route path="/invite-students/:id" element={<InviteStudents />} />
           <Route path="/logout" element={<Logout/>}/>
         

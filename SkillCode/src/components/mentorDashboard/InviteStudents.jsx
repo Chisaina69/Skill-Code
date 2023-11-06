@@ -84,7 +84,7 @@ const InviteStudents = ({ assessmentId }) => {
            
 
             <div className="invite-content">
-            <h1>Invite Students to Assessment</h1>
+            <h1 className='font-medium text-white font-sans text-lg bg-blue-950'>Invite Students to Assessment</h1>
                 <div className="invite-form">
                     <label className="message-field">
                         Message:
@@ -99,7 +99,7 @@ const InviteStudents = ({ assessmentId }) => {
                             />
                         </div>
                         <div>
-                        <button className="invite-button" onClick={handleInvite}>
+                        <button className="invite-button font-medium text-white font-sans  bg-blue-950" onClick={handleInvite}>
                             Invite
                         </button>
                         </div>
@@ -111,9 +111,9 @@ const InviteStudents = ({ assessmentId }) => {
                     <table>
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Select</th>
+                                <th className='font-medium text-white font-sans text-lg bg-orange-600 ' >Name</th>
+                                <th className='font-medium text-white font-sans text-lg bg-orange-600 ' >Email</th>
+                                <th className='font-medium text-white font-sans text-lg bg-orange-600 '>Select</th>
                             </tr>
                         </thead>
                         <tbody>

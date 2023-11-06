@@ -56,13 +56,13 @@ const ViewAssessment = () => {
                     <h2>{assessment.title}</h2>
                     <p>Description: {assessment.description}</p>
                 </div>
-                <h3>Questions</h3>
+                <h3 className='font-medium text-white font-sans text-lg bg-orange-600 text-center ' >Questions</h3>
                 <table>
                     <thead>
                         <tr>
-                            <th>Question</th>
-                            <th>Options</th>
-                            <th>Correct Answer</th>
+                            <th className='font-medium text-white font-sans text-lg bg-blue-950 '>Question</th>
+                            <th className='font-medium text-white font-sans text-lg bg-blue-950 ' >Options</th>
+                            <th className='font-medium text-white font-sans text-lg bg-blue-950 '>Correct Answer</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -82,7 +82,7 @@ const ViewAssessment = () => {
                     </tbody>
                 </table>
 
-                <button className="back-btn" onClick={() => closeModal()}>
+                <button className='font-medium text-white font-sans text-lg bg-blue-950 ' onClick={() => closeModal()}>
                     Back to Assessments
                 </button>
             </div>

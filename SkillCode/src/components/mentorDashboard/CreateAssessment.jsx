@@ -74,11 +74,12 @@ const CreateAssessment = () => {
     console.log("questions", questions)
 
     return (
-        <div className='student-scores-list'>
+        <div className='flex-column'>
   <h1 className='font-medium text-lg p-10 py-1 px-10 bg-orange-600 rounded inline-block mt-11 text-white w-full text-center'>Create Assessment</h1>
-  {message && <p className='text-center'>{message}</p>}
+  {message && <p className='text-center '>{message}</p>}
   {error && <p className='text-orange-500 text-center'>{error}</p>}
-  <form onSubmit={submitForm} className='assessment-form'>
+  <div className='flex-column'>
+  <form onSubmit={submitForm} className='assessment-form '>
     <label className='text-primary-color mb-2'>Title:</label>
     <input
       type="text"
@@ -126,11 +127,13 @@ const CreateAssessment = () => {
           required
           className='input-style'
         />
+        
       </div>
     ))}
     <button type="button" onClick={addQuestion} className='button-style'>Add Question</button>
     <button type="submit" className='button-style'>Create Assessment</button>
   </form>
+  </div>
 </div>
 
     );

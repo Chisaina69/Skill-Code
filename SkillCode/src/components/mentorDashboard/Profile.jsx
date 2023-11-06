@@ -17,8 +17,8 @@ const Profile = ({ match }) => {
     }, []);
 
     return (
-        <div style={{ fontFamily: 'Arial, sans-serif', color: '#15284C' }}>
-            <h1 style={{ color: '#15284C', textAlign: 'center', borderBottom: '2px solid #15284C' }}>Mentor Profile</h1>
+        <div className='font-serif' >
+            <h1 className='font-semibold'>Mentor Profile</h1>
             {error ? (
                 <p style={{ color: '#faa307', textAlign: 'center' }}>Error: Unable to fetch mentor data. Please try again later.</p>
             ) : mentor ? (

@@ -17,54 +17,54 @@ const Profile = ({ match }) => {
     }, []);
 
     return (
-        <div className='font-serif' >
-            <h1 className='font-semibold'>Mentor Profile</h1>
+        <div className='font-serif text-zinc-950' >
+            <h1 className='font-medium  font-sans text-lg p-10 py-1 px-10 bg-orange-600 rounded inline-block mt-11 text-white w-full text-center'>Mentor Profile</h1>
             {error ? (
-                <p style={{ color: '#faa307', textAlign: 'center' }}>Error: Unable to fetch mentor data. Please try again later.</p>
+                <p className='text-zinc-950 font-semibold'>Error: Unable to fetch mentor data. Please try again later.</p>
             ) : mentor ? (
-                <div>
-                    <table style={{ margin: '20px auto', borderCollapse: 'collapse', border: '2px solid #15284C' }}>
+                <div className='p-10'>
+                    <table className='table-auto'>
                         <tbody>
                             <tr>
-                                <td style={{ border: '1px solid #15284C', padding: '10px' }}>ID</td>
-                                <td style={{ border: '1px solid #15284C', padding: '10px' }}>{mentor.id}</td>
+                                <td className="px-4 py-2" >ID</td>
+                                <td className="px-4 py-2">{mentor.id}</td>
                             </tr>
                             <tr>
-                                <td style={{ border: '1px solid #15284C', padding: '10px' }}>Name</td>
-                                <td style={{ border: '1px solid #15284C', padding: '10px' }}>{mentor.name}</td>
+                                <td className="px-4 py-2" >Name</td>
+                                <td className="px-4 py-2">{mentor.name}</td>
                             </tr>
                             <tr>
-                                <td style={{ border: '1px solid #15284C', padding: '10px' }}>Email</td>
-                                <td style={{ border: '1px solid #15284C', padding: '10px' }}>{mentor.email}</td>
+                                <td className="px-4 py-2">Email</td>
+                                <td className="px-4 py-2">{mentor.email}</td>
                             </tr>
                         </tbody>
                     </table>
-                    <h2 style={{ color: '#15284C', textAlign: 'center' }}>Assessments</h2>
+                    <h2 className='font-medium  font-sans text-lg p-10 py-1 px-10 bg-blue-950 rounded inline-block mt-11 text-white w-full text-center'>Assessments</h2>
                     {mentor.assessments && mentor.assessments.length > 0 ? (
-                        <table style={{ border: '1px solid #15284C', borderCollapse: 'collapse', width: '100%', margin: '20px auto' }}>
-                            <thead>
-                                <tr style={{ background: '#faa307', color: '#15284C' }}>
-                                    <th style={{ border: '1px solid #15284C', padding: '8px' }}>Assessment ID</th>
-                                    <th style={{ border: '1px solid #15284C', padding: '8px' }}>Title</th>
-                                    <th style={{ border: '1px solid #15284C', padding: '8px' }}>Number of Questions</th>
+                        <table className='table-auto border'>
+                            <thead >
+                                <tr  >
+                                    <th className='font-medium text-white font-sans text-lg bg-orange-600 '>Assessment ID</th>
+                                    <th className='font-medium text-white font-sans text-lg bg-orange-600'>Title</th>
+                                    <th className='font-medium text-white font-sans text-lg bg-orange-600'>Number of Questions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {mentor.assessments.map(assessment => (
                                     <tr key={assessment.id}>
-                                        <td style={{ border: '1px solid #15284C', padding: '8px' }}>{assessment.id}</td>
-                                        <td style={{ border: '1px solid #15284C', padding: '8px' }}>{assessment.title}</td>
-                                        <td style={{ border: '1px solid #15284C', padding: '8px' }}>{assessment.questions_count}</td>
+                                        <td >{assessment.id}</td>
+                                        <td >{assessment.title}</td>
+                                        <td >{assessment.questions_count}</td>
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
                     ) : (
-                        <p style={{ textAlign: 'center' }}>No assessments found.</p>
+                        <p className='text-center'>No assessments found.</p>
                     )}
                 </div>
             ) : (
-                <p style={{ textAlign: 'center' }}>Loading...</p>
+                <p className='text-center'>Loading...</p>
             )}
         </div>
     );

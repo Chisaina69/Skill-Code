@@ -6,6 +6,7 @@ import StudentDashboard from './components/studentDashboard/studentdashboard';
 import AssessmentComponent from './components/studentDashboard/Assesment';
 import Help from './components/help';
 import Trials from './components/studentDashboard/Trialassesment';
+import StudentGrades from './components/studentDashboard/grades';
 import Login from './components/Authentication/Login';
 import Register from './components/Authentication/Register';
 import HomePage from './components/HomePage';
@@ -27,6 +28,7 @@ function App() {
       <Route path="/assessment" element={<AssessmentComponent />} />
       <Route path="/profile" element={<StudentProfile />} />
       <Route path="/Trials" element={<Trials />} />
+      <Route path="/grades" element={<StudentGrades/>} />
       <Route path='/help' element={<Help/>} />
       <Route path="/mentor" element={<Profile />} />
       <Route path="/mentor/assessment" element={<Assessment />} />

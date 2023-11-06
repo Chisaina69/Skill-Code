@@ -16,9 +16,9 @@ function Sidebar({ showSidebar }) {
         <FontAwesomeIcon icon={faClipboard} className="mr-2" />
         Assessment
       </Link>
-      <Link to="/quiz" className="sidebar-link my-2 hover-bg-blue-850">
+      <Link to="/grades" className="sidebar-link my-2 hover-bg-blue-850">
         <FontAwesomeIcon icon={faQuestionCircle} className="mr-2" />
-        Quiz
+        Grades
       </Link>
       <Link to="/student" className="sidebar-link my-2 hover:bg-blue-850">
         <FontAwesomeIcon icon={faHome} className="mr-2" />

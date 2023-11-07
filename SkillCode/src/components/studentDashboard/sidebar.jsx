@@ -8,7 +8,7 @@ function Sidebar({ showSidebar }) {
 
   return (
     <div className={sidebarClasses}>
-      <Link to="/profile" className="sidebar-link my-2 hover:bg-blue-850">
+      <Link to="/Profile" className="sidebar-link my-2 hover:bg-blue-850">
         <FontAwesomeIcon icon={faUser} className="mr-2" />
         Profile
       </Link>
@@ -16,7 +16,7 @@ function Sidebar({ showSidebar }) {
         <FontAwesomeIcon icon={faClipboard} className="mr-2" />
         Assessment
       </Link>
-      <Link to="/grades" className="sidebar-link my-2 hover-bg-blue-850">
+      <Link to="/Grades" className="sidebar-link my-2 hover-bg-blue-850">
         <FontAwesomeIcon icon={faQuestionCircle} className="mr-2" />
         Grades
       </Link>

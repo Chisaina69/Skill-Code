@@ -40,7 +40,7 @@ function StudentProfile({ student }) {
                   <ul className="space-y-1">
                     {studentData.assignments.map((assignment) => (
                       <li key={assignment.id} className="text-gray-700">
-                        <span className="font-semibold text-gray-900">Assignment ID:</span> {assignment.id}, <span className="font-semibold text-gray-900">Assessment ID:</span> {assignment.assessment_id}
+                        <span className="font-semibold text-gray-900">Assignment:</span> {assignment.id}, <span className="font-semibold text-gray-900">Assessment:</span> {assignment.assessment_id}
                       </li>
                     ))}
                   </ul>

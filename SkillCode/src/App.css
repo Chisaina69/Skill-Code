@@ -1,4 +1,5 @@
 
+
 .header {
   color: #15284C;
  text-align: center;
@@ -135,53 +136,3 @@ line-height: normal;
 }
 
 
-.logo {
-  margin-bottom: 20px;
-}
-
-
-.sidebar {
-  background: #f2f2f2;
-  width: 200px; 
-}
-
-
-.navbar {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-
-.navbar li {
-  padding: 8px;
-  cursor: pointer;
-}
-
-
-.help {
-  order: 11;
-}
-
-.logout {
-  order: 12;
-}
-
-/* Additional styles for the assessment search */
-.assessment-search {
-  text-align: center; /* Center the input and list */
-  margin-bottom: 30px; /* Add space between the assessments and the navbar */
-}
-
-.assessment-list {
-  list-style: none;
-  padding: 0;
-  /* Style the assessment list */
-}
-
-.assessment-list li {
-  cursor: pointer;
-  margin: 5px 0;
-  /* Add additional styles for each assessment item */
-}

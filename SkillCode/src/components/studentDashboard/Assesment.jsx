@@ -6,11 +6,12 @@ function AssessmentComponent() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [studentAnswers, setStudentAnswers] = useState(Array(assessmentData?.length).fill(null));
-  const [submitted, setSubmitted] = useState(false); // To track if the assessment is submitted
+  const [studentAnswers, setStudentAnswers] = useState([]); // Initialize with an empty array
+  const [submitted, setSubmitted] = useState(false);
   const studentId = 1;
 
   useEffect(() => {
+    // Fetch assessment data when the component mounts
     const fetchData = async () => {
       try {
         const response = await fetch(`/api/SkillCode/students/assessment_details/${studentId}`);
@@ -19,6 +20,8 @@ function AssessmentComponent() {
         }
         const data = await response.json();
         setAssessmentData(data.assessments);
+        // Initialize studentAnswers with null values for each question
+        setStudentAnswers(new Array(data.assessments[0].questions.length).fill(null));
         setLoading(false);
       } catch (error) {
         setError(`Error fetching data: ${error.message}`);
@@ -30,19 +33,20 @@ function AssessmentComponent() {
   }, [studentId]);
 
   const handleAnswerQuestion = (answer) => {
+    // Update the selected answer for the current question
     const updatedAnswers = [...studentAnswers];
     updatedAnswers[currentQuestionIndex] = answer;
     setStudentAnswers(updatedAnswers);
   };
 
   const submitAssessment = () => {
-
+    // Submit the student's answers for the current question
     const submissionData = {
       student_id: studentId,
       assessment_id: assessmentData[currentQuestionIndex].assignment_id,
       answers: studentAnswers,
     };
-  
+
     fetch(`/api/SkillCode/students/${studentId}/assessments/${assessmentData[currentQuestionIndex].assignment_id}/submit_assessment`, {
       method: "POST",
       headers: {
@@ -63,6 +67,7 @@ function AssessmentComponent() {
       });
   };
 
+  // Render the component based on loading, error, or assessment data
   if (loading) {
     return <div className="text-center mt-4">Loading...</div>;
   }
@@ -75,8 +80,7 @@ function AssessmentComponent() {
     return <div className="text-center mt-4 text-orange-500">No assessment data available.</div>;
   }
 
-  const currentQuestion = assessmentData[currentQuestionIndex];
-
+  // Display assessment questions, answer options, and correct answers (if submitted)
   return (
     <div className="container mx-auto p-4">
       <TopBar />
@@ -91,8 +95,8 @@ function AssessmentComponent() {
                 className="border p-4 rounded-lg bg-white shadow-md cursor-pointer"
                 onClick={() => setCurrentQuestionIndex(qIndex)}
               >
-                <h3 className="text-md font-semibold text-blue-500">{question.title}</h3>
-                {submitted ? ( // Only show correct answer after submission
+                <h3 className="text-md font-semibold text-blue-500">{question.text_question}</h3>
+                {submitted ? (
                   <p className="text-blue-500">Correct Answer: {question.correct_answer}</p>
                 ) : (
                   studentAnswers[qIndex] !== null ? (
@@ -108,7 +112,7 @@ function AssessmentComponent() {
                 <div className="mt-2">
                   {question.options ? (
                     <ul>
-                      {question.options.split(', ').map((option, optionIndex) => (
+                      {question.options.split('\n').map((option, optionIndex) => (
                         <li
                           key={optionIndex}
                           className={`border p-2 rounded-md cursor-pointer ${
@@ -119,7 +123,7 @@ function AssessmentComponent() {
                               : "bg-orange-200 text-blue-500"
                           }`}
                           onClick={() => {
-                            if (!submitted) { // Only allow answer selection if not submitted
+                            if (!submitted) {
                               handleAnswerQuestion(option);
                             }
                           }}

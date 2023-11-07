@@ -1,7 +1,7 @@
 
 import Assessment from './components/mentorDashboard/assessment'
 import Grades from './components/mentorDashboard/grades'
-import NavBar from './components/mentorDashboard/Navbar'
+import Mentor from './components/mentorDashboard/Mentordashboard'
 import Profile from './components/mentorDashboard/Profile'
 import Logout from './components/mentorDashboard/Logout'
 import ViewAssessment from './components/mentorDashboard/ViewAssessment'
@@ -26,6 +26,7 @@ function App() {
       
         <Routes>
           {/* Mentor Dashboard Routes */}
+          <Route path="/mentor" element={<Mentor />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/assessment" element={<Assessment />} />
           <Route path="/grades" element={<Grades />} />
@@ -40,10 +41,10 @@ function App() {
 
           {/* Student Dashboard Routes */}
           <Route path="/student" element={<StudentDashboard />} />
-          <Route path="/assessment" element={<AssessmentComponent />} />
-          <Route path="/Profile" element={<StudentProfile />} />
+          <Route path="/Assessment1" element={<AssessmentComponent />} />
+          <Route path="/Profile1" element={<StudentProfile />} />
           <Route path="/Trials" element={<Trials />} />
-          <Route path="/Grades" element={<StudentGrades />} />
+          <Route path="/Grades1" element={<StudentGrades />} />
 
           {/* Other Routes */}
           <Route path="/" element={<HomePage />} />

@@ -52,7 +52,7 @@ function TopBar() {
         )}
       </div>
       <div className="profile">
-        <Link to="/profile">
+        <Link to="/profile1">
           <FontAwesomeIcon icon={faUser} size="2x" color="orange" />
         </Link>
       </div>

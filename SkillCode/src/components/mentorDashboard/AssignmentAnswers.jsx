@@ -12,7 +12,7 @@ const AssignmentAnswers = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:5000/SkillCode/view_student_answers');
+        const response = await axios.get('api/SkillCode/view_student_answers');
         const filteredData = response.data.filter((assessment) => assessment.responses.length > 0);
         setData(filteredData);
       } catch (error) {
@@ -68,7 +68,7 @@ const AssignmentAnswers = () => {
       // Send each feedback individually to the server
       for (const feedback of feedbacks) {
         console.log("Sending feedback:", feedback);
-        const response = await axios.post('http://127.0.0.1:5000/SkillCode/mentors/feedback', feedback, {
+        const response = await axios.post('api/SkillCode/mentors/feedback', feedback, {
           headers: {
             'Content-Type': 'application/json',
           },
@@ -76,7 +76,7 @@ const AssignmentAnswers = () => {
         console.log("Response from server:", response.data);
       }
       for (const score of scores) {
-        await axios.put('http://127.0.0.1:5000/SkillCode/update_score', score, {
+        await axios.put('api/SkillCode/update_score', score, {
           headers: {
             'Content-Type': 'application/json',
           },

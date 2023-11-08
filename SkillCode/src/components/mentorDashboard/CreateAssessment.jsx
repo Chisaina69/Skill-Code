@@ -55,7 +55,7 @@ const CreateAssessment = () => {
         
         console.log("formatted",formattedQuestions)
         try {
-            const response = await axios.post('http://127.0.0.1:5000/SkillCode/assessments/create', {
+            const response = await axios.post('api/SkillCode/assessments/create', {
                 title: title,
                 description: description,
                 questions: formattedQuestions

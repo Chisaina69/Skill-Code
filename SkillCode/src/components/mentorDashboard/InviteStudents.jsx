@@ -17,7 +17,7 @@ const InviteStudents = ({ assessmentId }) => {
     useEffect(() => {
         const fetchStudents = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:5000/SkillCode/students');
+                const response = await fetch('api/SkillCode/students');
 
                 if (response.ok) {
                     const data = await response.json();
@@ -59,7 +59,7 @@ const InviteStudents = ({ assessmentId }) => {
 
     const sendBulkInvite = async (data) => {
         try {
-            const response = await fetch('http://127.0.0.1:5000/SkillCode/assessments/bulk_invite', {
+            const response = await fetch('api/SkillCode/assessments/bulk_invite', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

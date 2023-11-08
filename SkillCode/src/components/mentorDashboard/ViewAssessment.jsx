@@ -25,7 +25,7 @@ const ViewAssessment = () => {
 
         const fetchAssessmentDetails = async () => {
             try {
-                const response = await fetch(`http://127.0.0.1:5000/SkillCode/assessments/${id}`);
+                const response = await fetch(`api/SkillCode/assessments/${id}`);
                 if (response.ok) {
                     const data = await response.json();
                     setAssessment(data);

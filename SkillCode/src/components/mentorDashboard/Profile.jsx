@@ -6,7 +6,7 @@ const Profile = ({ match }) => {
     const [error, setError] = useState(false);
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:5000/SkillCode/mentors/${1}`)
+        axios.get(`api/SkillCode/mentors/${1}`)
             .then(response => {
                 setMentor(response.data);
             })

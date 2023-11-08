@@ -12,7 +12,7 @@ const Assessment = () => {
   useEffect(() => {
     const fetchAssessments = async () => {
       try {
-        const endpoint = 'http://127.0.0.1:5000/SkillCode/assessments';
+        const endpoint = 'api/SkillCode/assessments';
         const response = await fetch(endpoint);
         if (response.ok) {
           const data = await response.json();

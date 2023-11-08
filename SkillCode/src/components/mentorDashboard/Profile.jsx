@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import NavBar from './Navbar';
 
 const Profile = ({ match }) => {
     const [mentor, setMentor] = useState(null);
@@ -17,6 +18,8 @@ const Profile = ({ match }) => {
     }, []);
 
     return (
+        <div className='flex' >
+        <NavBar />
         <div className='font-serif text-zinc-950' >
             <h1 className='font-medium  font-sans text-lg p-10 py-1 px-10 bg-orange-600 rounded inline-block mt-11 text-white w-full text-center'>Mentor Profile</h1>
             {error ? (
@@ -66,6 +69,7 @@ const Profile = ({ match }) => {
             ) : (
                 <p className='text-center'>Loading...</p>
             )}
+        </div>
         </div>
     );
 };

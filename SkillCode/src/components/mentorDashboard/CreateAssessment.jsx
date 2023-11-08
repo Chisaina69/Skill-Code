@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import NavBar from './Navbar';
 
 const CreateAssessment = () => {
     const [title, setTitle] = useState('');
@@ -74,6 +75,8 @@ const CreateAssessment = () => {
     console.log("questions", questions)
 
     return (
+      <div className='flex' >
+      <NavBar />
  <div className='flex-column'>
   <h1 className=' font-medium  font-sans text-lg p-10 py-1 px-10 bg-orange-600 rounded inline-block mt-11 text-white w-full text-center'>Create Assessment</h1>
   {message && <p className='text-center '>{message}</p>}
@@ -134,7 +137,7 @@ const CreateAssessment = () => {
 
   </form>
   </div>
-
+</div>
 
     );
 };

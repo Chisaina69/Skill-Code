@@ -24,7 +24,6 @@ import HomePage from './components/HomePage';
 function App() {
   return (
     <>
-      
         <Routes>
           
           {/* Mentor Dashboard Routes */}
@@ -32,7 +31,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/assessment" element={<Assessment />} />
           <Route path="/grades" element={<Grades />} />
-          <Route path="/viewAssessment/:id" element={<ViewAssessment />} />
+          <Route path="/assessments/:id" element={<ViewAssessment />} />
           <Route path="/inviteStudents" element={<InviteStudents />} />
           <Route path="/createAssessment" element={<CreateAssessment />} />
           {/* ... other mentor dashboard routes */}

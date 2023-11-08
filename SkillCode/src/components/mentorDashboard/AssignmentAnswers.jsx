@@ -114,7 +114,7 @@ const AssignmentAnswers = () => {
 
     const renderResponses = (responses, assessmentID) => {
       return responses.map((response, index) => (
-        <div key={index}>
+        <div key={index} className='font-medium  font-sans text-lg  bg-blue-950 rounded inline-block mt-5 text-white w-full '>
           <div>
             <strong>Student Name:</strong> {response.student_name}
           </div>
@@ -134,14 +134,38 @@ const AssignmentAnswers = () => {
               name={`feedback_${index}`}
               onChange={(e) => handleFeedback(e, assessmentID, response.question_id, response.student_id)}
               required
+              style={{
+              borderColor: '#15284C',
+              padding: '12px',
+              backgroundColor: '#f5f5f5',
+              color: '#15284C',
+              borderRadius: '8px',
+              border: '2px solid #15284C',
+              outline: 'none',
+              width: '50%',
+              fontSize: '16px',
+              boxSizing: 'border-box',
+          }}
+        
             />
-          </div>
-          <div>
-            <label>Score</label>
+          
+            <label>   Score</label>
             <input
               name={`score_${index}`}
               onChange={(e) => handleScore(e, assessmentID, response.question_id, response.student_id)}
               required
+              style={{
+                borderColor: '#15284C',
+                padding: '12px',
+                backgroundColor: '#f5f5f5',
+                color: '#15284C',
+                borderRadius: '8px',
+                border: '2px solid #15284C',
+                outline: 'none',
+                width: '15%',
+                fontSize: '16px',
+                boxSizing: 'border-box',
+              }}
             />
           </div>
           <hr />
@@ -163,9 +187,13 @@ const AssignmentAnswers = () => {
     return (
       <div className='flex' >
       <NavBar />
-      <div>
-        {data.map((assessment) => renderAssessment(assessment))}
-        <button onClick={handleSubmit}>Submit Feedback & scores</button>
+      
+      <div >
+        <h1 className='font-medium  font-sans text-lg p-10 py-1 px-10 bg-orange-600 rounded inline-block mt-11 text-white w-full text-center'>GRADING</h1>
+        <div className='font-medium text-black  font-sans text-lg  bg-gray-200  cursor-pointer shadow-md rounded-lg p-4 mt-5'>
+          {data.map((assessment) => renderAssessment(assessment))}
+          </div>
+        <button onClick={handleSubmit} className='font-medium  font-sans text-lg py-1 px-10 bg-orange-600 rounded inline-block mt-11 text-white w-full text-center'>Submit Feedback & scores</button>
         {error && <div>{error}</div>}
         {message && <div>{message}</div>}
       </div>

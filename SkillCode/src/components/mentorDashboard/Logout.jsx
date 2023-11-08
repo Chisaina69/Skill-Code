@@ -1,9 +1,10 @@
 import React from 'react';
+import HomePage from '../HomePage';
 
 function Logout() {
   return (
     <div>
-      <h1>Logout Page</h1>
+      <HomePage/>
     </div>
   );
 }

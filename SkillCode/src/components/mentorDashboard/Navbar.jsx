@@ -27,7 +27,7 @@ const NavBar = () => (
             </li>
             <li className='mb-4 flex items-center'>
             <FontAwesomeIcon icon={faLifeRing} className="mr-2" />
-              <Link className='text-zinc-950 font-semibold'to='/help'>Help</Link>
+              <Link className='text-zinc-950 font-semibold'to='/helpmentor'>Help</Link>
             </li>
             <li className='mb-4 flex items-center'>
             <FontAwesomeIcon icon={faSignOutAlt} className="mr-2" />

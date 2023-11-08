@@ -19,7 +19,7 @@ import StudentGrades from './components/studentDashboard/grades';
 import Login from './components/Authentication/Login';
 import Register from './components/Authentication/Register';
 import HomePage from './components/HomePage';
-
+import HelpMentor from './components/mentorDashboard/HelpMentor'
 
 function App() {
   return (
@@ -37,6 +37,7 @@ function App() {
           {/* ... other mentor dashboard routes */}
           <Route path="/create-assessment" element={<CreateAssessment />} />
           <Route path="/invite-students/:id" element={<InviteStudents />} />
+          <Route path="/helpmentor" element={<HelpMentor />} />
           <Route path="/logout" element={<Logout />} />
   
       
@@ -53,7 +54,6 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-
           <Route path='/help' element={<Help />} />
         </Routes>
         <Outlet />

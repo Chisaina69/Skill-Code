@@ -20,11 +20,13 @@ import Login from './components/Authentication/Login';
 import Register from './components/Authentication/Register';
 import HomePage from './components/HomePage';
 
+
 function App() {
   return (
     <>
       
         <Routes>
+          
           {/* Mentor Dashboard Routes */}
           <Route path="/mentor" element={<Mentor />} />
           <Route path="/profile" element={<Profile />} />
@@ -37,7 +39,9 @@ function App() {
           <Route path="/create-assessment" element={<CreateAssessment />} />
           <Route path="/invite-students/:id" element={<InviteStudents />} />
           <Route path="/logout" element={<Logout />} />
-          
+  
+      
+    
 
           {/* Student Dashboard Routes */}
           <Route path="/student" element={<StudentDashboard />} />

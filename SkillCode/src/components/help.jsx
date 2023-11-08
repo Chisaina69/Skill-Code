@@ -24,17 +24,9 @@ const Help = () => {
     setNewMessage('');
   };
 
-  const backgroundImageStyle = {
-    backgroundImage: 'url("../image2.jpg")',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundAttachment: 'fixed',
-    opacity: '0.7', 
-    height: '100vh', 
-  };
-
+  
   return (
-    <div style={backgroundImageStyle}>
+    <div >
       <TopBar /> 
       <div className="w-full max-w-screen-md mx-auto p-4 bg-gradient-to-b from-blue-100 via-blue-200 to-blue-100 rounded-lg shadow-lg">
         <div className="h-64 overflow-y-auto mb-4 p-2 bg-white bg-opacity-70 backdrop-blur rounded-lg shadow-md">

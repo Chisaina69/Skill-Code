@@ -19,7 +19,7 @@ import StudentGrades from './components/studentDashboard/grades';
 import Login from './components/Authentication/Login';
 import Register from './components/Authentication/Register';
 import HomePage from './components/HomePage';
-import NavBar from './components/mentorDashboard/Navbar';
+
 
 function App() {
   return (

@@ -1,9 +1,10 @@
 import React from 'react';
+import AssignmentAnswers from './AssignmentAnswers';
 
 function Grade() {
   return (
     <div>
-      <h1>Grading Page</h1>
+        <AssignmentAnswers />
     </div>
   );
 }

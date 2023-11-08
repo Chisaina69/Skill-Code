@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './AssessmentDetails.css';
+import NavBar from './Navbar';
 
 const InviteStudents = ({ assessmentId }) => {
     const [students, setStudents] = useState([]);
@@ -80,6 +81,8 @@ const InviteStudents = ({ assessmentId }) => {
 
 
     return (
+        <div className='flex' >
+        <NavBar />
         <div>
            
 
@@ -134,6 +137,7 @@ const InviteStudents = ({ assessmentId }) => {
                     </table>
                 </div>
             </div>
+        </div>
         </div>
     );
 };

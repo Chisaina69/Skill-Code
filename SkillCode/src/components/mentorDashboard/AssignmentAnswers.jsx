@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import NavBar from './Navbar';
 
 const AssignmentAnswers = () => {
   const [data, setData] = useState([]);
@@ -160,11 +161,14 @@ const AssignmentAnswers = () => {
     };
 
     return (
+      <div className='flex' >
+      <NavBar />
       <div>
         {data.map((assessment) => renderAssessment(assessment))}
         <button onClick={handleSubmit}>Submit Feedback & scores</button>
         {error && <div>{error}</div>}
         {message && <div>{message}</div>}
+      </div>
       </div>
     );
   };

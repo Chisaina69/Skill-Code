@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate} from 'react-router-dom';
-
-
+import NavBar from './Navbar';
 
 const Assessment = () => {
   const [assessments, setAssessments] = useState([]);
@@ -55,6 +54,8 @@ const Assessment = () => {
 
   return (
     <>
+    <div className='flex' >
+      <NavBar />
       <div className='flex-column'>
       <div >
         <h1 className='font-medium  font-sans text-lg p-10 py-1 px-10 bg-orange-600 rounded inline-block mt-11 text-white w-full text-center '>Assessmets</h1>
@@ -116,6 +117,7 @@ const Assessment = () => {
           ))}
         </tbody>
       </table>
+        </div>
         </div>
     </>
   );

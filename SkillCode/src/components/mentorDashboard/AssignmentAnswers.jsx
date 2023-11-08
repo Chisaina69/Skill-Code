@@ -114,7 +114,7 @@ const AssignmentAnswers = () => {
 
     const renderResponses = (responses, assessmentID) => {
       return responses.map((response, index) => (
-        <div key={index} className='font-medium  font-sans text-lg  bg-blue-950 rounded inline-block mt-5 text-white w-full text-center'>
+        <div key={index} className='font-medium  font-sans text-lg  bg-blue-950 rounded inline-block mt-5 text-white w-full '>
           <div>
             <strong>Student Name:</strong> {response.student_name}
           </div>
@@ -142,15 +142,14 @@ const AssignmentAnswers = () => {
               borderRadius: '8px',
               border: '2px solid #15284C',
               outline: 'none',
-              width: '100%',
+              width: '50%',
               fontSize: '16px',
               boxSizing: 'border-box',
           }}
         
             />
-          </div>
-          <div>
-            <label>Score</label>
+          
+            <label>   Score</label>
             <input
               name={`score_${index}`}
               onChange={(e) => handleScore(e, assessmentID, response.question_id, response.student_id)}

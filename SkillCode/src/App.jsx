@@ -13,6 +13,7 @@ import './App.css';
 import StudentProfile from './components/studentDashboard/profile';
 import StudentDashboard from './components/studentDashboard/studentdashboard';
 import AssessmentInvites from './components/studentDashboard/Invites'
+import AssessmentComponent from './components/studentDashboard/Assesment'
 import QuestionFeedback from './components/studentDashboard/Feedback'
 import Help from './components/help';
 import Trials from './components/studentDashboard/Trialassesment';
@@ -55,6 +56,7 @@ function App() {
           <Route path="/Grades1" element={<StudentGrades />} />
           <Route path="/feedback" element={<QuestionFeedback />} />
           <Route path="/invites" element={<AssessmentInvites />} />
+          <Route path="/Assessment1" element={<AssessmentComponent />} />
 
 
 

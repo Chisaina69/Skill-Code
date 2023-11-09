@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
-<<<<<<< HEAD
+
   export default defineConfig({
     plugins: [react()],
     server: {
@@ -13,17 +13,6 @@ import react from '@vitejs/plugin-react'
           rewrite: (path) => path.replace(/^\/api/, ''),
         },
       }
-=======
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    proxy: {
-      '/api': {
-        target: 'https://skill-code.onrender.com/',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
-      },
->>>>>>> 9de44cb1100cb893d524506c1cd60e3e893a110e
     }
   })
   

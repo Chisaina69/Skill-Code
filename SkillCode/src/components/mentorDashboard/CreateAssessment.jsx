@@ -55,7 +55,7 @@ const CreateAssessment = () => {
         });
 
         try {
-            const response = await axios.post('/api/SkillCode/assessments/create', {
+            const response = await axios.post('https://skill-code.onrender.com//SkillCode/assessments/create', {
                 title: title,
                 description: description,
                 questions: formattedQuestions

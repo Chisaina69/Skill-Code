@@ -14,7 +14,7 @@ const Profile = () => {
             return;
         }
 
-        axios.get(`/api/SkillCode/mentors/profile`, {
+        axios.get(`https://skill-code.onrender.com//SkillCode/mentors/profile`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }

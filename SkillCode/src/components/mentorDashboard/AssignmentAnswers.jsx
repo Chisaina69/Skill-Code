@@ -9,7 +9,7 @@ const AssignmentAnswers = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/api/SkillCode/assessments/students');
+        const response = await axios.get('https://skill-code.onrender.com//SkillCode/assessments/students');
         setAssessmentsData(response.data.assessments);
       } catch (error) {
         console.error('Error fetching data:', error);

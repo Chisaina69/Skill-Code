@@ -14,7 +14,7 @@ const InviteStudents = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const response = await fetch('/api/SkillCode/students');
+        const response = await fetch('https://skill-code.onrender.com//SkillCode/students');
         if (response.ok) {
           const data = await response.json();
           setStudents(data);

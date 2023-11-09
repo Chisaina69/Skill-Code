@@ -12,6 +12,8 @@ import React from 'react';
 import './App.css';
 import StudentProfile from './components/studentDashboard/profile';
 import StudentDashboard from './components/studentDashboard/studentdashboard';
+import AssessmentInvites from './components/studentDashboard/Invites'
+import QuestionFeedback from './components/studentDashboard/Feedback'
 import AssessmentComponent from './components/studentDashboard/Assesment';
 import Help from './components/help';
 import Trials from './components/studentDashboard/Trialassesment';
@@ -45,6 +47,10 @@ function App() {
           <Route path="/Profile1" element={<StudentProfile />} />
           <Route path="/Trials" element={<Trials />} />
           <Route path="/Grades1" element={<StudentGrades />} />
+          <Route path="/feedback" element={<QuestionFeedback />} />
+          <Route path="/invites" element={<AssessmentInvites />} />
+          <Route path="/" element={<StudentGrades />} />
+
 
           {/* Other Routes */}
           <Route path="/" element={<HomePage />} />

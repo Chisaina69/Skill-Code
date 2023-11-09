@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import TopBar from "../topbar";
+import QuestionFeedback from "./Feedback";
 
 function AssessmentComponent() {
   const [assessmentData, setAssessmentData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [studentAnswers, setStudentAnswers] = useState([]); // Initialize with an empty array
+  const [studentAnswers, setStudentAnswers] = useState([]);
   const [submitted, setSubmitted] = useState(false);
   const studentId = 1;
 
   useEffect(() => {
-    // Fetch assessment data when the component mounts
     const fetchData = async () => {
       try {
         const response = await fetch(`/api/SkillCode/students/assessment_details/${studentId}`);
@@ -20,8 +20,7 @@ function AssessmentComponent() {
         }
         const data = await response.json();
         setAssessmentData(data.assessments);
-        // Initialize studentAnswers with null values for each question
-        setStudentAnswers(new Array(data.assessments[0].questions.length).fill(null));
+        setStudentAnswers(new Array(data.assessments[0]?.questions.length).fill(null));
         setLoading(false);
       } catch (error) {
         setError(`Error fetching data: ${error.message}`);
@@ -33,21 +32,25 @@ function AssessmentComponent() {
   }, [studentId]);
 
   const handleAnswerQuestion = (answer) => {
-    // Update the selected answer for the current question
     const updatedAnswers = [...studentAnswers];
     updatedAnswers[currentQuestionIndex] = answer;
     setStudentAnswers(updatedAnswers);
   };
 
   const submitAssessment = () => {
-    // Submit the student's answers for the current question
+    const currentAssessment = assessmentData[currentQuestionIndex];
+    if (!currentAssessment) {
+      console.error("No assessment data for the current question.");
+      return;
+    }
+
     const submissionData = {
       student_id: studentId,
-      assessment_id: assessmentData[currentQuestionIndex].assignment_id,
+      assessment_id: currentAssessment.assignment_id,
       answers: studentAnswers,
     };
 
-    fetch(`/api/SkillCode/students/${studentId}/assessments/${assessmentData[currentQuestionIndex].assignment_id}/submit_assessment`, {
+    fetch(`/api/SkillCode/students/${studentId}/assessments/${currentAssessment.assignment_id}/submit_assessment`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -57,7 +60,7 @@ function AssessmentComponent() {
       .then((response) => {
         if (response.ok) {
           console.log("Assessment submitted successfully!");
-          setSubmitted(true); // Set the submitted state to true
+          setSubmitted(true);
         } else {
           console.error("Failed to submit assessment");
         }
@@ -67,29 +70,15 @@ function AssessmentComponent() {
       });
   };
 
-  // Render the component based on loading, error, or assessment data
-  if (loading) {
-    return <div className="text-center mt-4">Loading...</div>;
-  }
-
-  if (error) {
-    return <div className="text-center mt-4 text-red-500">{error}</div>;
-  }
-
-  if (!assessmentData || assessmentData.length === 0) {
-    return <div className="text-center mt-4 text-orange-500">No assessment data available.</div>;
-  }
-
-  // Display assessment questions, answer options, and correct answers (if submitted)
   return (
     <div className="container mx-auto p-4">
       <TopBar />
       <h1 className="text-2xl font-bold text-blue-500 mb-4">Assessment Questions</h1>
-      {assessmentData.map((assessment, index) => (
-        <div key={index} className="mb-4 border p-4 rounded-lg bg-blue-100 shadow-md">
-          <h2 className="text-lg font-semibold text-orange-500">{assessment.assessment_title}</h2>
-          <p className="text-gray-600 mb-2">{assessment.assessment_description}</p>
-          {assessment.questions.map((question, qIndex) => (
+      {assessmentData?.map((assignment, assignmentIndex) => (
+        <div key={assignmentIndex} className="mb-4 border p-4 rounded-lg bg-blue-100 shadow-md">
+          <h2 className="text-lg font-semibold text-orange-500">{assignment.assessment_title}</h2>
+          <p className="text-gray-600 mb-2">{assignment.assessment_description}</p>
+          {assignment.questions.map((question, qIndex) => (
             <div key={qIndex} className="mb-4">
               <div
                 className="border p-4 rounded-lg bg-white shadow-md cursor-pointer"
@@ -139,6 +128,11 @@ function AssessmentComponent() {
               )}
             </div>
           ))}
+          {submitted && (
+            <div className="mt-4">
+              <QuestionFeedback studentId={studentId} assessmentId={assignment.assignment_id} />
+            </div>
+          )}
         </div>
       ))}
       <button
@@ -152,10 +146,6 @@ function AssessmentComponent() {
 }
 
 export default AssessmentComponent;
-
-
-
-
 
 
 

@@ -7,7 +7,14 @@ const Profile = ({ match }) => {
     const [error, setError] = useState(false);
 
     useEffect(() => {
-        axios.get(`api/SkillCode/mentors/${1}`)
+        const accessToken = localStorage.getItem('accessToken');
+        console.log(accessToken)
+        axios.get( 'https://skill-code.onrender.com/SkillCode/mentors/profile',{
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+                'Content-Type': 'application/json'
+              }
+        })
             .then(response => {
                 setMentor(response.data);
             })
@@ -16,7 +23,6 @@ const Profile = ({ match }) => {
                 setError(true); // Set error state to true for error handling
             });
     }, []);
-
     return (
         <div className='flex' >
         <NavBar />

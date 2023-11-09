@@ -27,7 +27,7 @@ const ViewAssessment = () => {
 
         const fetchAssessmentDetails = async () => {
             try {
-                const response = await fetch(`api/SkillCode/assessments/${id}`);
+                const response = await fetch(`https://skill-code.onrender.com/SkillCode/assessments/${id}`);
                 if (response.ok) {
                     const data = await response.json();
                     setAssessment(data);

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 .header {
@@ -84,55 +85,57 @@ line-height: normal;
 
 
 .centered-container {
+=======
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+>>>>>>> 886f4c312b6b7d5c4797c0e2c45a147db46c1f30
   text-align: center;
-  margin: 100px auto;
-  max-width: 400px;
-  padding: 20px;
-  border: 2px solid #ccc;
-  background-color: #15284C;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.centered-container h2 {
-  font-size: 1.5em;
-  margin-bottom: 20px;
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-.centered-container select,
-.centered-container input {
-  padding: 10px;
-  font-size: 1em;
-  width: 100%;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.centered-container select:focus,
-.centered-container input:focus {
-  outline: none;
-  border-color:  #15284C;
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
 }
 
-.centered-container button {
-  padding: 10px 20px;
-  font-size: 1em;
-  background-color: #EA501A;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.card {
+  padding: 2em;
 }
 
-.centered-container form {
-  display: grid;
-  gap: 10px;
+.read-the-docs {
+  color: #888;
 }
 
+<<<<<<< HEAD
 .mentor {
   display: flex;
   flex-direction: column;
 }
 
 
+=======
+>>>>>>> 886f4c312b6b7d5c4797c0e2c45a147db46c1f30

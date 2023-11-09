@@ -6,21 +6,33 @@ function AssessmentComponent() {
   const [assessmentData, setAssessmentData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(null);
   const [studentAnswers, setStudentAnswers] = useState([]);
   const [submitted, setSubmitted] = useState(false);
-  const studentId = 1;
+  const [studentId, setStudentId] = useState(null); // Added state for studentId
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`/api/SkillCode/students/assessment_details/${studentId}`);
+        const accessToken = localStorage.getItem('accessToken');
+        console.log(accessToken);
+
+        const response = await fetch('https://skill-code.onrender.com/SkillCode/students/assessment_details', {
+    headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+    },
+});
+
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
+
         const data = await response.json();
         setAssessmentData(data.assessments);
-        setStudentAnswers(new Array(data.assessments[0]?.questions.length).fill(null));
+        setCurrentQuestionIndex(data.assessments ? 0 : null);
+        setStudentAnswers(new Array(data.assessments?.[0]?.questions.length).fill(null));
+        setStudentId(data.assessments ? data.assessments[0].student_id : null); 
         setLoading(false);
       } catch (error) {
         setError(`Error fetching data: ${error.message}`);
@@ -37,37 +49,50 @@ function AssessmentComponent() {
     setStudentAnswers(updatedAnswers);
   };
 
-  const submitAssessment = () => {
-    const currentAssessment = assessmentData[currentQuestionIndex];
-    if (!currentAssessment) {
-      console.error("No assessment data for the current question.");
-      return;
-    }
+  const submitAssessment = async () => {
+    try {
+      if (!assessmentData || currentQuestionIndex === null || !studentId) {
+        console.error("Assessment data, currentQuestionIndex, or studentId is not set.");
+        return;
+      }
 
-    const submissionData = {
-      student_id: studentId,
-      assessment_id: currentAssessment.assignment_id,
-      answers: studentAnswers,
-    };
+      const currentAssessment = assessmentData[currentQuestionIndex];
+      if (!currentAssessment) {
+        console.error("No assessment data for the current question.");
+        return;
+      }
 
-    fetch(`/api/SkillCode/students/${studentId}/assessments/${currentAssessment.assignment_id}/submit_assessment`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(submissionData),
-    })
-      .then((response) => {
+      if (studentAnswers && studentAnswers.length > currentQuestionIndex) {
+        const submissionData = {
+          student_id: studentId, 
+          assessment_id: currentAssessment.assignment_id,
+          answers: studentAnswers,
+        };
+
+        const accessToken = localStorage.getItem('accessToken');
+        console.log(accessToken);
+
+        const response = await fetch(`https://skill-code.onrender.com/SkillCode/students/assessments/${currentAssessment.assignment_id}/submit_assessment`, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(submissionData),
+        });
+
         if (response.ok) {
           console.log("Assessment submitted successfully!");
           setSubmitted(true);
         } else {
           console.error("Failed to submit assessment");
         }
-      })
-      .catch((error) => {
-        console.error("Error submitting assessment:", error);
-      });
+      } else {
+        console.error("Invalid studentAnswers, currentQuestionIndex, or studentId");
+      }
+    } catch (error) {
+      console.error("Error submitting assessment:", error);
+    }
   };
 
   return (
@@ -146,7 +171,6 @@ function AssessmentComponent() {
 }
 
 export default AssessmentComponent;
-
 
 
 

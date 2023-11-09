@@ -7,7 +7,7 @@ function QuestionFeedback() {
 
   useEffect(() => {
     // Fetch question feedback for the student's assessment
-    fetch(`/api/SkillCode/students/${studentId}/assessments/${assessmentId}/feedback`)
+    fetch('https://skill-code.onrender.com/SkillCode/students/assessments/1/feedback')
       .then((response) => response.json())
       .then((data) => setFeedbackData(data.feedback))
       .catch((error) => console.error('Error fetching data:', error));

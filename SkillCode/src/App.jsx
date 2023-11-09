@@ -1,5 +1,4 @@
 
-
 import Assessment from './components/mentorDashboard/assessment'
 import Grades from './components/mentorDashboard/grades'
 import Mentor from './components/mentorDashboard/Mentordashboard'
@@ -24,17 +23,9 @@ import Register from './components/Authentication/Register';
 import HomePage from './components/HomePage';
 import HelpMentor from './components/mentorDashboard/HelpMentor'
 
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-
 function App() {
-
   return (
     <>
-
         <Routes>
           
           {/* Mentor Dashboard Routes */}
@@ -62,8 +53,7 @@ function App() {
           <Route path="/Grades1" element={<StudentGrades />} />
           <Route path="/feedback" element={<QuestionFeedback />} />
           <Route path="/invites" element={<AssessmentInvites />} />
-          
-
+      
 
           {/* Other Routes */}
           <Route path="/" element={<HomePage />} />
@@ -77,4 +67,5 @@ function App() {
 }
 
 
-export default App
+
+export default App;

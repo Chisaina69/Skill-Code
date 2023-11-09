@@ -36,9 +36,13 @@ const Login = () => {
     if (userType) {
       let loginRoute;
       if (userType === 'mentor') {
-        loginRoute = 'api/SkillCode/mentors/login';
+        loginRoute = 'https://skill-code.onrender.com//SkillCode/mentors/login';
       } else if (userType === 'student') {
+<<<<<<< HEAD
         loginRoute = 'https://skill-code.onrender.com/SkillCode/students/login';
+=======
+        loginRoute = 'https://skill-code.onrender.com//SkillCode/students/login';
+>>>>>>> 9de44cb1100cb893d524506c1cd60e3e893a110e
       }
 
 // Making a POST request to the login route

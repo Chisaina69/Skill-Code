@@ -51,7 +51,11 @@ const Register = () => {
     e.preventDefault();
 
     if (userType) {
+<<<<<<< HEAD
       const registerRoute = userType === 'mentor' ? 'api/SkillCode/mentors/signup' : 'https://skill-code.onrender.com/SkillCode/students/signup';
+=======
+      const registerRoute = userType === 'mentor' ? 'https://skill-code.onrender.com//SkillCode/mentors/signup' : 'https://skill-code.onrender.com//SkillCode/students/signup';
+>>>>>>> 9de44cb1100cb893d524506c1cd60e3e893a110e
 
       fetch(registerRoute, {
         method: 'POST',

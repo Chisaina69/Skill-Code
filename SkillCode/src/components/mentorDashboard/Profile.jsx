@@ -2,19 +2,30 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import NavBar from './Navbar';
 
-const Profile = ({ match }) => {
+const Profile = () => {
     const [mentor, setMentor] = useState(null);
     const [error, setError] = useState(false);
 
     useEffect(() => {
-        axios.get(`api/SkillCode/mentors/${1}`)
-            .then(response => {
-                setMentor(response.data);
-            })
-            .catch(error => {
-                console.log(error);
-                setError(true); // Set error state to true for error handling
-            });
+        const token = localStorage.getItem('accessToken');
+
+        if (!token) {
+            setError(true);
+            return;
+        }
+
+        axios.get(`https://skill-code.onrender.com//SkillCode/mentors/profile`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            setMentor(response.data);
+        })
+        .catch(error => {
+            console.error(error);
+            setError(true);
+        });
     }, []);
 
     return (
@@ -49,7 +60,7 @@ const Profile = ({ match }) => {
                                 <tr  >
                                     <th className='font-medium text-white font-sans text-lg bg-orange-600 '>Assessment ID</th>
                                     <th className='font-medium text-white font-sans text-lg bg-orange-600'>Title</th>
-                                    <th className='font-medium text-white font-sans text-lg bg-orange-600'>Number of Questions</th>
+                                    <th className='font-medium text-white font-sans text-lg bg-orange-600'>Description</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -57,7 +68,7 @@ const Profile = ({ match }) => {
                                     <tr key={assessment.id}>
                                         <td >{assessment.id}</td>
                                         <td >{assessment.title}</td>
-                                        <td >{assessment.questions_count}</td>
+                                        <td >{assessment.description}</td>
                                     </tr>
                                 ))}
                             </tbody>

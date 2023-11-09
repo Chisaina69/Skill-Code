@@ -12,7 +12,7 @@ function Sidebar({ showSidebar }) {
         <FontAwesomeIcon icon={faUser} className="mr-2" />
         Profile
       </Link>
-      <Link to="/Assessment1" className="sidebar-link my-2 hover-bg-blue-850">
+      <Link to="/assessmentlist" className="sidebar-link my-2 hover-bg-blue-850">
         <FontAwesomeIcon icon={faClipboard} className="mr-2" />
         Assessment
       </Link>

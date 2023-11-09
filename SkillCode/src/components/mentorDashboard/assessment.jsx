@@ -11,7 +11,7 @@ const Assessment = () => {
   useEffect(() => {
     const fetchAssessments = async () => {
       try {
-        const endpoint = 'api/SkillCode/assessments';
+        const endpoint = 'https://skill-code.onrender.com//SkillCode/assessments';
         const response = await fetch(endpoint);
         if (response.ok) {
           const data = await response.json();
@@ -41,7 +41,7 @@ const Assessment = () => {
 
 
   const handleViewAssessment = assessmentId => {
-    navigate(`/assessments/${assessmentId}`);
+    navigate(`/view-assessment/${assessmentId}`);
 
   };
 

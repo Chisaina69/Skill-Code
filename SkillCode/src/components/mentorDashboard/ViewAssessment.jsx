@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './AssessmentDetails.css';
+import NavBar from './Navbar';
+
 
 const ViewAssessment = () => {
     const [assessment, setAssessment] = useState(null);
@@ -25,7 +27,7 @@ const ViewAssessment = () => {
 
         const fetchAssessmentDetails = async () => {
             try {
-                const response = await fetch(`http://127.0.0.1:5000/SkillCode/assessments/${id}`);
+                const response = await fetch(`api/SkillCode/assessments/${id}`);
                 if (response.ok) {
                     const data = await response.json();
                     setAssessment(data);
@@ -48,6 +50,8 @@ const ViewAssessment = () => {
     }
 
     return (
+        <div className='flex' >
+        <NavBar />
 
         <div className="modal">
             <div className="modal-content">
@@ -86,6 +90,7 @@ const ViewAssessment = () => {
                     Back to Assessments
                 </button>
             </div>
+        </div>
         </div>
     );
 };

@@ -21,25 +21,29 @@ import StudentGrades from './components/studentDashboard/grades';
 import Login from './components/Authentication/Login';
 import Register from './components/Authentication/Register';
 import HomePage from './components/HomePage';
+import HelpMentor from './components/mentorDashboard/HelpMentor'
 
 function App() {
   return (
     <>
-      
         <Routes>
+          
           {/* Mentor Dashboard Routes */}
           <Route path="/mentor" element={<Mentor />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/assessment" element={<Assessment />} />
           <Route path="/grades" element={<Grades />} />
-          <Route path="/viewAssessment/:id" element={<ViewAssessment />} />
+          <Route path="/assessments/:id" element={<ViewAssessment />} />
           <Route path="/inviteStudents" element={<InviteStudents />} />
           <Route path="/createAssessment" element={<CreateAssessment />} />
           {/* ... other mentor dashboard routes */}
           <Route path="/create-assessment" element={<CreateAssessment />} />
           <Route path="/invite-students/:id" element={<InviteStudents />} />
+          <Route path="/helpmentor" element={<HelpMentor />} />
           <Route path="/logout" element={<Logout />} />
-          
+  
+      
+    
 
           {/* Student Dashboard Routes */}
           <Route path="/student" element={<StudentDashboard />} />
@@ -56,7 +60,6 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-
           <Route path='/help' element={<Help />} />
         </Routes>
         <Outlet />

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './AssessmentDetails.css';
+import NavBar from './Navbar';
 
 const InviteStudents = ({ assessmentId }) => {
     const [students, setStudents] = useState([]);
@@ -17,7 +18,7 @@ const InviteStudents = ({ assessmentId }) => {
     useEffect(() => {
         const fetchStudents = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:5000/SkillCode/students');
+                const response = await fetch('api/SkillCode/students');
 
                 if (response.ok) {
                     const data = await response.json();
@@ -59,7 +60,7 @@ const InviteStudents = ({ assessmentId }) => {
 
     const sendBulkInvite = async (data) => {
         try {
-            const response = await fetch('http://127.0.0.1:5000/SkillCode/assessments/bulk_invite', {
+            const response = await fetch('api/SkillCode/assessments/bulk_invite', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -80,6 +81,8 @@ const InviteStudents = ({ assessmentId }) => {
 
 
     return (
+        <div className='flex' >
+        <NavBar />
         <div>
            
 
@@ -134,6 +137,7 @@ const InviteStudents = ({ assessmentId }) => {
                     </table>
                 </div>
             </div>
+        </div>
         </div>
     );
 };

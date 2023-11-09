@@ -5,25 +5,31 @@ const StudentGrades = () => {
   const [studentInfo, setStudentInfo] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const student_id = 1;
+  const token = localStorage.getItem('accessToken'); // Get the access token from localStorage
 
   useEffect(() => {
-    fetch(`/api/SkillCode/students/grades/${student_id}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw Error(`Request failed with status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setStudentInfo(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error.message);
-        setLoading(false);
-      });
-  }, []);
+    fetch(`/api/SkillCode/students/grades`, {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${token}`, // Include the access token in the authorization header
+        "Content-Type": "application/json"
+      }
+    })
+    .then((response) => {
+      if (!response.ok) {
+        throw Error(`Request failed with status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      setStudentInfo(data);
+      setLoading(false);
+    })
+    .catch((error) => {
+      setError(error.message);
+      setLoading(false);
+    });
+  }, [token]); // Include the access token in the dependency array
 
   if (loading) {
     return <p className="text-center text-blue-500 text-2xl mt-10">Loading...</p>;
@@ -35,7 +41,7 @@ const StudentGrades = () => {
 
       <div className="flex-grow p-6 rounded-lg shadow-lg my-4 mx-auto bg-white max-w-lg">
         <h2 className="text-2xl font-bold text-blue-700 mb-4 border-b pb-2">Student Grade Information</h2>
-        <p className="text-lg text-blue-900 mb-2">Student: {studentInfo.student_name}</p>
+        <p className="text-lg text-blue-900 mb-2">Student ID: {studentInfo.student_id}</p>
         <p className="text-lg text-blue-900 mb-6">Student Email: {studentInfo.student_email}</p>
 
         <h3 className="text-xl font-bold text-orange-700 mt-6 mb-4">Grade History</h3>
@@ -53,5 +59,3 @@ const StudentGrades = () => {
 };
 
 export default StudentGrades;
-
-

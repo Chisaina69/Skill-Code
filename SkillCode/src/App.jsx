@@ -49,10 +49,10 @@ function App() {
           {/* Student Dashboard Routes */}
           <Route path="/student" element={<StudentDashboard />} />
           <Route path="/assessmentlist" element={<AssessmentList />} />
-          <Route path="/assessment/:id" element={<AssessmentDetails />} />
+          <Route path="/assessment/:assessmentId" element={<AssessmentDetails />} />
           <Route path="/Profile1" element={<StudentProfile />} />
           <Route path="/Trials" element={<Trials />} />
-          <Route path="/Grades1" element={<StudentGrades />} />
+          <Route path="/studentgrades" element={<StudentGrades />} />
           <Route path="/feedback" element={<QuestionFeedback />} />
           <Route path="/invites" element={<AssessmentInvites />} />
 

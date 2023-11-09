@@ -1,33 +1,58 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom"; // Import the useNavigate hook
+import { useNavigate } from "react-router-dom";
 
 function AssessmentInvites() {
   const [inviteData, setInviteData] = useState([]);
   const [showNotifications, setShowNotifications] = useState(false);
-  const navigate = useNavigate(); // Get the navigate function
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch assessment invites
-    fetch('api/SkillCode/students/1/assessment_invites') // Replace 123 with the actual student ID
+    fetch('/api/SkillCode/students/assessment_invites', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`, // Include the access token in the request headers
+      },
+    })
       .then((response) => response.json())
       .then((data) => setInviteData(data))
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
 
-  const acceptAssessmentInvite = (assessmentId) => {
-    // Make a POST request to accept the invite
-    fetch(`api/SkillCode/students/1/assessments/${assessmentId}/accept_invite`, {
+  const handleAcceptInvite = (assessmentId) => {
+    fetch(`/api/SkillCode/assessments/${assessmentId}/accept_invite`, {
       method: 'POST',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+      },
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data); // Log the response from the server
-        // Navigate to the assignment page after accepting the invite
-        navigate(`/Assessment1/${assessmentId}`);
+        console.log(data);
+        // Show an alert when an invite is accepted
+        alert(`Invite accepted for assessment: ${assessmentId}`);
+        // Remove the accepted invite from the state
+        setInviteData((prevInvites) => prevInvites.filter((invite) => invite.assessment_id !== assessmentId));
       })
       .catch((error) => console.error('Error accepting invite:', error));
+  };
+
+  const handleDeclineInvite = (assessmentId) => {
+    // Implement the logic to decline the invite if needed
+    // You can make a DELETE request or handle it based on your backend implementation
+    // Example:
+    // fetch(`/api/SkillCode/assessments/${assessmentId}/decline_invite`, {
+    //   method: 'DELETE',
+    //   headers: {
+    //     Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+    //   },
+    // })
+    // .then((response) => response.json())
+    // .then((data) => {
+    //   console.log(data);
+    //   // Handle the response as needed
+    // })
+    // .catch((error) => console.error('Error declining invite:', error));
   };
 
   return (
@@ -42,10 +67,16 @@ function AssessmentInvites() {
             <div className="text-white">Description: {invite.assessment_description}</div>
             <div className="text-white">Mentor: {invite.mentor_name}</div>
             <button
-              onClick={() => acceptAssessmentInvite(invite.assessment_id)}
-              className="mt-2 px-4 py-2 bg-orange-500 text-white hover:bg-orange-600"
+              onClick={() => handleAcceptInvite(invite.assessment_id)}
+              className="mt-2 mr-2 px-4 py-2 bg-orange-500 text-white hover:bg-orange-600"
             >
               Accept
+            </button>
+            <button
+              onClick={() => handleDeclineInvite(invite.assessment_id)}
+              className="mt-2 px-4 py-2 bg-red-500 text-white hover:bg-red-600"
+            >
+              Decline
             </button>
           </li>
         ))}

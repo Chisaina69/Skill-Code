@@ -6,10 +6,25 @@ function AssessmentDetails() {
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const token = localStorage.getItem('accessToken');
+
 
   useEffect(() => {
+        // Retrieve the access token from localStorage
+        const studentId = localStorage.getItem('studentId'); // Retrieve student ID from localStorage
+        const token = localStorage.getItem('accessToken');
+
+
+        // Check if the token and student ID exist
+        if (!token || !studentId) {
+          // Handle the scenario where the token or student ID is missing, e.g., redirect to the login page
+          console.error('Access token or student ID not found. Redirect to login page.');
+          // You can redirect the user to the login page here if necessary.
+          return;
+        }
+
     // Fetch questions for the specific assessment using API endpoint
-    fetch(`/api/SkillCode/assessments/1/questions`)
+    fetch(`/api/SkillCode/assessments/${assessmentId}/questions`)
       .then((response) => response.json())
       .then((data) => {
         setQuestions(data);
@@ -37,30 +52,32 @@ function AssessmentDetails() {
     if (isSubmitting) {
       return;
     }
-
+  
     // Prepare submission data
-    const submissionData = {
-      student_id: '<student_id>', // Replace with the actual student ID
-      assessment_id: assessmentId,
-      answers: Object.entries(answers).map(([questionId, answer]) => ({
-        question_id: parseInt(questionId, 10),
-        answer_text: answer,
-      })),
-    };
-
+    const submissionData = questions.map((question) => ({
+      question_id: question.question_id,
+      answer_text: answers[question.question_id],
+    }));
+  
     // Submit answers to the API endpoint
     setIsSubmitting(true);
-    fetch(`/api/SkillCode/students/${submissionData.student_id}/assessments/${submissionData.assessment_id}/submit_assessment`, {
+    fetch(`/api/SkillCode/students/assessments/${assessmentId}/submit_assessment`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`, // Include the access token in the Authorization header
       },
       body: JSON.stringify(submissionData),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
       .then((data) => {
-        // Handle the response from the API after submitting answers
         console.log('Submission response:', data);
+        // Handle the submission response here, update UI or perform other actions if necessary
         setIsSubmitting(false);
       })
       .catch((error) => {
@@ -68,6 +85,7 @@ function AssessmentDetails() {
         setIsSubmitting(false);
       });
   };
+  
 
   return (
     <div>

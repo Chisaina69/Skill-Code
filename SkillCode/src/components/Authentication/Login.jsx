@@ -53,6 +53,9 @@ const Login = () => {
       .then(data => {
         if (data.access_token) {
           localStorage.setItem('accessToken', data.access_token);
+          localStorage.setItem('studentId', data.student_id);
+          console.log(data.access_token)
+          console.log(data.student_id);
           if (userType === 'mentor') {
             navigate('/mentor');
           } else if (userType === 'student') {

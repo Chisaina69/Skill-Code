@@ -55,10 +55,7 @@ function App() {
           <Route path="/Grades1" element={<StudentGrades />} />
           <Route path="/feedback" element={<QuestionFeedback />} />
           <Route path="/invites" element={<AssessmentInvites />} />
-<<<<<<< HEAD
-          
-=======
->>>>>>> 9de44cb1100cb893d524506c1cd60e3e893a110e
+
 
 
           {/* Other Routes */}

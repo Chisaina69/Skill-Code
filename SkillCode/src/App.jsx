@@ -53,7 +53,7 @@ function App() {
           <Route path="/Grades1" element={<StudentGrades />} />
           <Route path="/feedback" element={<QuestionFeedback />} />
           <Route path="/invites" element={<AssessmentInvites />} />
-          <Route path="/" element={<StudentGrades />} />
+          
 
 
           {/* Other Routes */}

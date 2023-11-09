@@ -41,7 +41,7 @@ const Assessment = () => {
 
 
   const handleViewAssessment = assessmentId => {
-    navigate(`/assessments/${assessmentId}`);
+    navigate(`/view-assessment/${assessmentId}`);
 
   };
 

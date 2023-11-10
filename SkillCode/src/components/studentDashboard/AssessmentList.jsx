@@ -12,16 +12,13 @@ function AssessmentList() {
 
     // Check if the token and student ID exist
     if (!token || !studentId) {
-      // Handle the scenario where the token or student ID is missing, e.g., redirect to the login page
       console.error('Access token or student ID not found. Redirect to login page.');
-      // You can redirect the user to the login page here if necessary.
       return;
     }
 
-    // Fetch assessments for the current student using API endpoint with the dynamic student ID
     fetch(`/api/SkillCode/students/assessment_details`, {
       headers: {
-        Authorization: `Bearer ${token}`, // Include the access token in the Authorization header
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((response) => response.json())
@@ -31,7 +28,7 @@ function AssessmentList() {
       .catch((error) => {
         console.error('Error fetching assessments:', error);
       });
-  }, [studentId]); // Add studentId as a dependency to useEffect
+  }, [studentId]); 
 
   return (
     <div>

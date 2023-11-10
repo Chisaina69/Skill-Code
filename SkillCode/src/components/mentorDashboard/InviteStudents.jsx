@@ -58,15 +58,12 @@ const InviteStudents = () => {
       if (response.ok) {
         console.log('Students invited to the assessment successfully');
         alert('Students invited to the assessment successfully!');
-        // Handle success, e.g., show a success message to the user
       } else {
         const errorData = await response.json();
         console.error('Failed to invite students:', errorData.error);
-        // Handle error, e.g., show an error message to the user
       }
     } catch (error) {
       console.error('Failed to invite students:', error);
-      // Handle error, e.g., show an error message to the user
     }
   };
 
@@ -85,7 +82,6 @@ const InviteStudents = () => {
               type='text'
               placeholder='Search by Email'
               onChange={(e) => {
-                // Filter students as user types in the input field
                 const searchTerm = e.target.value.toLowerCase();
                 const filteredStudents = students.filter((student) =>
                   student.email.toLowerCase().includes(searchTerm)

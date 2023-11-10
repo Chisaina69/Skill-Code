@@ -13,7 +13,6 @@ const HelpMentor = () => {
     // Add the user's message to the messages state
     setMessages([...messages, { sender: 'You', message: newMessage }]);
 
-    // Simulate a response from the support team (you can replace this logic with your own)
     setTimeout(() => {
       setMessages([
         ...messages,

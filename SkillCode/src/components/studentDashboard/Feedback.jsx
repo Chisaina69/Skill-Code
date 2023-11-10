@@ -6,7 +6,6 @@ function QuestionFeedback() {
   const [feedbackData, setFeedbackData] = useState([]);
 
   useEffect(() => {
-    // Fetch question feedback for the student's assessment
     fetch(`/api/SkillCode/students/${studentId}/assessments/${assessmentId}/feedback`)
       .then((response) => response.json())
       .then((data) => setFeedbackData(data.feedback))

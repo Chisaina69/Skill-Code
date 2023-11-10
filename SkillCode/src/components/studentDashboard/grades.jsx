@@ -11,7 +11,7 @@ const StudentGrades = () => {
     fetch(`/api/SkillCode/students/grades`, {
       method: "GET",
       headers: {
-        "Authorization": `Bearer ${token}`, // Include the access token in the authorization header
+        "Authorization": `Bearer ${token}`,
         "Content-Type": "application/json"
       }
     })
@@ -29,7 +29,7 @@ const StudentGrades = () => {
       setError(error.message);
       setLoading(false);
     });
-  }, [token]); // Include the access token in the dependency array
+  }, [token]); 
 
   if (loading) {
     return <p className="text-center text-blue-500 text-2xl mt-10">Loading...</p>;

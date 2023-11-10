@@ -8,27 +8,22 @@ function AssessmentDetails() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const token = localStorage.getItem('accessToken');
 
-
   useEffect(() => {
-        // Retrieve the access token from localStorage
-        const studentId = localStorage.getItem('studentId'); // Retrieve student ID from localStorage
-        const token = localStorage.getItem('accessToken');
+    const studentId = localStorage.getItem('studentId');
 
+    if (!token || !studentId) {
+      console.error('Access token or student ID not found. Redirect to login page.');
+      return;
+    }
 
-        // Check if the token and student ID exist
-        if (!token || !studentId) {
-          // Handle the scenario where the token or student ID is missing, e.g., redirect to the login page
-          console.error('Access token or student ID not found. Redirect to login page.');
-          // You can redirect the user to the login page here if necessary.
-          return;
-        }
-
-    // Fetch questions for the specific assessment using API endpoint
-    fetch(`/api/SkillCode/assessments/${assessmentId}/questions`)
+    fetch(`/api/SkillCode/assessments/${assessmentId}/questions`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
         setQuestions(data);
-        // Initialize answers state with question IDs as keys and empty string values
         const initialAnswers = {};
         data.forEach((question) => {
           initialAnswers[question.question_id] = '';
@@ -38,10 +33,9 @@ function AssessmentDetails() {
       .catch((error) => {
         console.error('Error fetching questions:', error);
       });
-  }, [assessmentId]);
+  }, [assessmentId, token]);
 
   const handleAnswerChange = (questionId, answer) => {
-    // Update answers based on questionId
     setAnswers((prevAnswers) => ({
       ...prevAnswers,
       [questionId]: answer,
@@ -53,38 +47,45 @@ function AssessmentDetails() {
       return;
     }
   
-    // Prepare submission data
-    const submissionData = questions.map((question) => ({
-      question_id: question.question_id,
-      answer_text: answers[question.question_id],
+    // Create an array of objects with question_id and answer_text properties
+    const submissionData = Object.entries(answers).map(([questionId, answerText]) => ({
+      question_id: parseInt(questionId, 10),
+      answer_text: answerText,
     }));
   
-    // Submit answers to the API endpoint
+    if (submissionData.length === 0 || submissionData.some(item => !item.answer_text.trim())) {
+      console.error('Please provide answers to all questions before submitting.');
+      return;
+    }
+  
     setIsSubmitting(true);
+  
     fetch(`/api/SkillCode/students/assessments/${assessmentId}/submit_assessment`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`, // Include the access token in the Authorization header
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(submissionData),
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error(`Network response was not ok. Status: ${response.status}`);
         }
         return response.json();
       })
       .then((data) => {
         console.log('Submission response:', data);
-        // Handle the submission response here, update UI or perform other actions if necessary
         setIsSubmitting(false);
+        // Handle the submission response here if needed
       })
       .catch((error) => {
-        console.error('Error submitting assessment:', error);
+        console.error('Error submitting assessment:', error.message);
         setIsSubmitting(false);
       });
   };
+  
+  
   
 
   return (
@@ -98,14 +99,14 @@ function AssessmentDetails() {
               {question.options.split(',').map((option, index) => (
                 <li key={index}>
                   <label>
-                    Answer: 
+                    Answer:
                     <input
                       type="text"
                       value={answers[question.question_id]}
                       onChange={(e) => handleAnswerChange(question.question_id, e.target.value)}
                       disabled={isSubmitting}
                     />
-                    {option.trim()} {/* Display the option text */}
+                    {option.trim()} 
                   </label>
                 </li>
               ))}

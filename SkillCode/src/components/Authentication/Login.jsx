@@ -41,7 +41,6 @@ const Login = () => {
         loginRoute = 'api/SkillCode/students/login';
       }
 
-// Making a POST request to the login route
       fetch(loginRoute, {
         method: 'POST',
         headers: {
@@ -76,7 +75,6 @@ const Login = () => {
     <div className="centered-container">
       <h2 style={{ color: 'white' }}>Login</h2>
       <div>
-        {/* Dropdown menu to select user type */}
         <select onChange={(e) => handleLoginClick(e.target.value)}>
           <option value="">Select User Type</option>
           <option value="student">Student</option>

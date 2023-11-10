@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import NavBar from "./Navbar"; // Make sure to provide the correct path to your NavBar component.
+import NavBar from "./Navbar"; 
 
 function MentorDashboard() {
   const backgroundStyle = {

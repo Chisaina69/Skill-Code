@@ -13,8 +13,8 @@ import './App.css';
 import StudentProfile from './components/studentDashboard/profile';
 import StudentDashboard from './components/studentDashboard/studentdashboard';
 import AssessmentInvites from './components/studentDashboard/Invites'
+import AssessmentComponent from './components/studentDashboard/Assesment'
 import QuestionFeedback from './components/studentDashboard/Feedback'
-import AssessmentComponent from './components/studentDashboard/Assesment';
 import Help from './components/help';
 import Trials from './components/studentDashboard/Trialassesment';
 import StudentGrades from './components/studentDashboard/grades';
@@ -22,6 +22,8 @@ import Login from './components/Authentication/Login';
 import Register from './components/Authentication/Register';
 import HomePage from './components/HomePage';
 import HelpMentor from './components/mentorDashboard/HelpMentor'
+import AssessmentDetails from './components/studentDashboard/AssessmentDetails'
+import AssessmentList from './components/studentDashboard/AssessmentList'
 
 function App() {
   return (
@@ -33,7 +35,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/assessment" element={<Assessment />} />
           <Route path="/grades" element={<Grades />} />
-          <Route path="/assessments/:id" element={<ViewAssessment />} />
+          <Route path="/view-assessment/:id" element={<ViewAssessment />} />
           <Route path="/inviteStudents" element={<InviteStudents />} />
           <Route path="/createAssessment" element={<CreateAssessment />} />
           {/* ... other mentor dashboard routes */}
@@ -47,13 +49,18 @@ function App() {
 
           {/* Student Dashboard Routes */}
           <Route path="/student" element={<StudentDashboard />} />
-          <Route path="/Assessment1" element={<AssessmentComponent />} />
+          <Route path="/assessmentlist" element={<AssessmentList />} />
+          <Route path="/assessment/:id" element={<AssessmentDetails />} />
           <Route path="/Profile1" element={<StudentProfile />} />
           <Route path="/Trials" element={<Trials />} />
           <Route path="/Grades1" element={<StudentGrades />} />
           <Route path="/feedback" element={<QuestionFeedback />} />
           <Route path="/invites" element={<AssessmentInvites />} />
-      
+
+          <Route path="/Assessment1" element={<AssessmentComponent />} />
+
+
+
 
           {/* Other Routes */}
           <Route path="/" element={<HomePage />} />

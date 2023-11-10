@@ -7,20 +7,30 @@ function StudentProfile({ student }) {
     const placeholderImageURL = `https://picsum.photos/200/200?random=${studentId}`;
 
     useEffect(() => {
-      fetch(`/api/SkillCode/students/${studentId}`)
-        .then((response) => {
+      const accessToken = localStorage.getItem('accessToken');
+      console.log(accessToken);
+    
+      fetch('https://skill-code.onrender.com/SkillCode/students/profile', {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(response => {
           if (!response.ok) {
             throw new Error(`API request failed with status: ${response.status}`);
           }
           return response.json();
         })
-        .then((data) => {
+        .then(data => {
           setStudentData(data);
         })
-        .catch((error) => {
+        .catch(error => {
           console.error('Error fetching data:', error);
         });
     }, [studentId]);
+    
 
     return (
       <div className="min-h-screen bg-gradient-to-b from-blue-400 via-orange-400 to-blue-600 p-4">

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faClipboard, faHome, faLifeRing, faSignOutAlt, faChartBar } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faClipboard, faHome, faLifeRing, faSignOutAlt, faChartBar, faQuestion } from "@fortawesome/free-solid-svg-icons";
 
 function Sidebar({ showSidebar }) {
   const sidebarClasses = showSidebar ? "fixed left-0 top-0 h-full bg-blue-950 text-white p-4 flex flex-col w-16 z-10" : "fixed left-0 top-0 h-full bg-blue-950 text-white p-4 flex flex-col w-16 hidden";
@@ -24,6 +24,10 @@ function Sidebar({ showSidebar }) {
         <FontAwesomeIcon icon={faHome} className="mr-2" />
         Home
       </Link>
+      <Link to="/trials" className="sidebar-link my-2 hover:bg-blue-850">
+        <FontAwesomeIcon icon={faQuestion} className="mr-2" />
+        Challenges
+      </Link>
       <Link to="/help" className="sidebar-link my-2 mt-auto hover-bg-blue-850">
         <FontAwesomeIcon icon={faLifeRing} className="mr-2" />
         Help
@@ -41,6 +45,7 @@ function Sidebar({ showSidebar }) {
 }
 
 export default Sidebar;
+
 
 
 

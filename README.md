@@ -1,21 +1,22 @@
 # Skill-Code
 
 ## Description 
-Cheezydrip is a web application made to allow users to broswe cheezydrip clothes,and olso order them .
+SkillCode is a platform where students can come and asses their skills and mentors can come up here and test their students' skills by creating their own assessments and sending it to them.
 
 ## Features
---Users can can log in as a student or mentor
---A student can submmit assignments
---View grades for their assignments and get feed back from the mentor
---Mentors can create assements for different students
+--Users can log in as a student or mentor
+--A student can submit assignments
+--View grades for their assignments and get feedback from the mentor
+--Mentors can create assessments for different students
 --Mentors can grade and send feedback to the students 
 --Students can do codding challenges which are timed 
 ## Technologies Used
 
 ### Frontend: 
-- vite react
+- Vite react
 - Tailwind
-- css
+- CSS
+- Eval
 
 
 ## Installation & Setup

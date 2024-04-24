@@ -30,8 +30,6 @@ Access the App: Once the server is running, open your web browser and navigate t
 ## Contributing
 contributed by Quincy Muyekwe
 
-## License
 
-Copyright <2023> <Quincy Muyekwe>
 
 
